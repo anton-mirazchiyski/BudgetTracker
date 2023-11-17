@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="d-flex justify-content-center mt-5">
+        <form action="{% url 'create_account' %}" method="post">
+            <h2 class="pb-2">Sign up</h2>
+            {% for field in form %}
+                <div class="mb-3 border border-3 border-info rounded">
+                    {{ field }}
+                </div>
+            {% endfor %}
+            {% if form.errors %}
+                <div class="alert alert-danger text-wrap" style="width: 15rem">
+                    {{ form.errors }}
+                </div>
+            {% endif %}
+            <button type="submit" class="btn btn-success">Create Account</button>
+        {% csrf_token %}
+        </form>
+    </div>
+{% endblock %}
