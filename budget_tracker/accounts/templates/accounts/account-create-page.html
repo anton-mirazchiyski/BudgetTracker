@@ -3,7 +3,7 @@
 {% block title %} Budget Tracker - Account Creation {% endblock %}
 
 {% block content %}
-    <div class="d-flex align-items-center justify-content-center mt-5" style="height: 500px">
+    <div class="d-flex align-items-center justify-content-center mt-5 me-4" style="height: 500px">
         <form action="{% url 'create_account' %}" method="post">
             <h2 class="pb-2">Sign up</h2>
             {% for field in form %}
@@ -18,6 +18,9 @@
             {% endif %}
             <button type="submit" class="btn btn-success">Create Account</button>
             {% csrf_token %}
+            <div class="pt-2">
+                <h5>Have an account? <a href="#" class="text-decoration-none">Sign in</a></h5>
+            </div>
         </form>
     </div>
 {% endblock %}
