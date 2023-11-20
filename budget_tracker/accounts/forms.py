@@ -5,17 +5,11 @@ from django.core.exceptions import ValidationError
 UserModel = get_user_model()
 
 
-class RegistrationForm(forms.ModelForm):
+class AccountsBaseForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs['class'] = 'form-control'
-
-    password2 = forms.CharField(widget=forms.PasswordInput(
-        attrs={
-            'placeholder': 'Confirm Password'
-        }
-    ))
 
     class Meta:
         model = UserModel
@@ -45,6 +39,15 @@ class RegistrationForm(forms.ModelForm):
             )
         }
 
+
+class RegistrationForm(AccountsBaseForm):
+
+    password2 = forms.CharField(widget=forms.PasswordInput(
+        attrs={
+            'placeholder': 'Confirm Password'
+        }
+    ))
+
     def clean_password2(self):
         password = self.cleaned_data.get("password")
         password2 = self.cleaned_data.get("password2")
@@ -58,3 +61,18 @@ class RegistrationForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
+
+class LoginForm(AccountsBaseForm):
+    def __init__(self, request, *args, **kwargs):
+        self.request = request
+        super().__init__(*args, **kwargs)
+
+    class Meta(AccountsBaseForm.Meta):
+        fields = ('email', 'password')
+
+    def get_user(self, user_id):
+        try:
+            return UserModel.objects.get(pk=user_id)
+        except UserModel.DoesNotExist:
+            return None

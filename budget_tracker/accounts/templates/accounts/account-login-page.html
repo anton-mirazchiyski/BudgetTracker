@@ -1,21 +1,18 @@
 {% extends 'base.html' %}
 
-{% block title %} Budget Tracker - Account Creation {% endblock %}
+{% block title %} Budget Tracker - Account Login {% endblock %}
 
 {% block content %}
     <div class="d-flex align-items-center justify-content-center mt-5 me-4" style="height: 500px">
-        <form action="{% url 'accounts:create_account' %}" method="post">
-            <h2 class="pb-2">Sign up</h2>
+        <form action="{% url 'accounts:login_account' %}" method="post">
+            <h2 class="pb-2">Sign in</h2>
             {% for field in form %}
                 <div class="mb-3 border border-2 border-secondary rounded">
                     {{ field }}
                 </div>
             {% endfor %}
-            <button type="submit" class="btn btn-success">Create Account</button>
+            <button type="submit" class="btn btn-success">Login</button>
             {% csrf_token %}
-            <div class="pt-2">
-                <h5>Have an account? <a href="#" class="text-decoration-none">Sign in</a></h5>
-            </div>
             {% if form.errors %}
                 <div class="alert alert-danger text-wrap" style="width: 17rem">
                     {{ form.errors }}
