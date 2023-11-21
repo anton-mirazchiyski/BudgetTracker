@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth import get_user_model, authenticate, login
+from django.contrib.auth import get_user_model, authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.views import generic as views
 
@@ -33,3 +33,8 @@ def login_user(request):
         'accounts/account-login-page.html',
         {'form': login_form}
     )
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('common:home')
