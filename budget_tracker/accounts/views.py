@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model, authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.views import generic as views
 
-from budget_tracker.accounts.forms import RegistrationForm, LoginForm
+from budget_tracker.accounts.forms import RegistrationForm, LoginForm, DetailsForm
 
 UserModel = get_user_model()
 
@@ -42,3 +42,15 @@ def logout_user(request):
 
 def details_profile(request, pk):
     profile = UserModel.objects.get(pk=pk)
+    if request.method == 'GET':
+        form = DetailsForm(instance=profile)
+    else:
+        form = DetailsForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('common:home')
+    return render(
+        request,
+        'accounts/account-details-page.html',
+        {'form': form, 'profile_pk': pk}
+    )
