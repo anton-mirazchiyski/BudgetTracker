@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class="d-flex align-items-center justify-content-center mt-5 me-4" style="height: 500px">
-        <form action="{% url 'accounts:login_account' %}" method="post">
+        <form action="{% url 'accounts:login-account' %}" method="post">
             <h2 class="pb-2">Sign in</h2>
             {% for field in form %}
                 <div class="mb-3 border border-2 border-secondary rounded">

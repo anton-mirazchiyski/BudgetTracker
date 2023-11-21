@@ -6,14 +6,14 @@
                     <a href="{% url 'common:home' %}" class="h4 text-decoration-none text-light me-5">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{% url 'accounts:create_account' %}" class="text-decoration-none text-light me-4">Sign
+                    <a href="{% url 'accounts:create-account' %}" class="text-decoration-none text-light me-4">Sign
                         Up</a>
                 </li>
                 <li class="nav-item">
                     <span> or </span>
                 </li>
                 <li class="nav-item">
-                    <a href="{% url 'accounts:login_account' %}" class="text-decoration-none text-light ms-4">Sign
+                    <a href="{% url 'accounts:login-account' %}" class="text-decoration-none text-light ms-4">Sign
                         In</a>
                 </li>
                 <li class="nav-item">
@@ -27,7 +27,10 @@
                     <a href="{% url 'common:home' %}" class="h4 text-decoration-none text-light me-5">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{% url 'accounts:logout_account' %}" class="text-decoration-none text-light">Sign Out</a>
+                    <a href="#" class="text-decoration-none text-light">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'accounts:logout-account' %}" class="text-decoration-none text-light ms-5">Sign Out</a>
                 </li>
             </ul>
         {% endif %}

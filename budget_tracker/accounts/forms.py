@@ -67,3 +67,7 @@ class LoginForm(AccountsBaseForm):
     class Meta(AccountsBaseForm.Meta):
         fields = ('email', 'password')
 
+
+class DetailsForm(AccountsBaseForm):
+    class Meta(AccountsBaseForm.Meta):
+        fields = ('first_name', 'last_name', 'email')

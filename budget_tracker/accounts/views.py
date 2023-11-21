@@ -38,3 +38,7 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     return redirect('common:home')
+
+
+def details_profile(request, pk):
+    profile = UserModel.objects.get(pk=pk)
