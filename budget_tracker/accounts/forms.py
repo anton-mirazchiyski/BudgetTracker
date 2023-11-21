@@ -64,15 +64,6 @@ class RegistrationForm(AccountsBaseForm):
 
 
 class LoginForm(AccountsBaseForm):
-    def __init__(self, request, *args, **kwargs):
-        self.request = request
-        super().__init__(*args, **kwargs)
-
     class Meta(AccountsBaseForm.Meta):
         fields = ('email', 'password')
 
-    def get_user(self, user_id):
-        try:
-            return UserModel.objects.get(pk=user_id)
-        except UserModel.DoesNotExist:
-            return None
