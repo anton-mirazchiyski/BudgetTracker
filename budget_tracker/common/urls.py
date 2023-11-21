@@ -1,9 +1,9 @@
 from django.urls import path
 
-from budget_tracker.common.views import IndexView
+from budget_tracker.common.views import index
 
 app_name = 'common'
 
 urlpatterns = [
-    path('', IndexView.as_view(), name='home'),
+    path('', index, name='home'),
 ]
