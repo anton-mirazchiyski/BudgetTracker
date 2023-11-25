@@ -2,6 +2,8 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 
+from budget_tracker.accounts.models import Currency
+
 UserModel = get_user_model()
 
 
@@ -71,3 +73,17 @@ class LoginForm(AccountsBaseForm):
 class DetailsForm(AccountsBaseForm):
     class Meta(AccountsBaseForm.Meta):
         fields = ('first_name', 'last_name', 'email')
+
+
+class CurrencyForm(forms.ModelForm):
+    class Meta:
+        model = Currency
+        fields = ('currency',)
+
+        widgets = {
+            'currency': forms.Select(
+                attrs={
+                    'class': 'form-select form-control'
+                }
+            )
+        }
