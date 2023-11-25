@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %} Change Currency {% endblock %}
+
+{% block content %}
+    <div class="d-flex align-items-center justify-content-evenly me-5" style="height: 500px">
+        <div class="fs-5">
+            Choose between several available currencies
+        </div>
+        <div class="me-5">
+        <form action="{% url 'accounts:change-currency' profile_pk %}" method="post">
+            <h5 class="pb-2">Change your currency here</h5>
+            <div class="border border-2 border-secondary rounded">
+            {{ form.currency }}
+            </div>
+            <div class="pt-4">
+                <button type="submit" class="btn btn-success">Save</button>
+            </div>
+            {% csrf_token %}
+        </form>
+        </div>
+        <div class="me-5 fs-5">
+            Your current currency is: <span class="text-warning">{{ currency }}</span>
+        </div>
+    </div>
+{% endblock %}
