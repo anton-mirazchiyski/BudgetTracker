@@ -3,7 +3,8 @@ from django.contrib.auth import get_user_model, authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.views import generic as views
 
-from budget_tracker.accounts.forms import RegistrationForm, LoginForm, DetailsForm
+from budget_tracker.accounts.forms import RegistrationForm, LoginForm, DetailsForm, CurrencyForm
+from budget_tracker.accounts.models import UserProfile, Currency
 
 UserModel = get_user_model()
 
@@ -48,9 +49,29 @@ def details_profile(request, pk):
         form = DetailsForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
-            return redirect('common:home')
+            return redirect(request.META['HTTP_REFERER'])
     return render(
         request,
         'accounts/account-details-page.html',
         {'form': form, 'profile_pk': pk}
     )
+
+
+def change_currency(request, pk):
+    user = request.user
+    if request.method == 'GET':
+        currency_form = CurrencyForm()
+    else:
+        currency_form = CurrencyForm(request.POST)
+        if currency_form.is_valid():
+            new_currency = currency_form.save(commit=False)
+            user_profile = UserProfile.objects.filter(user=user).get()
+            old_currency = Currency.objects.filter(user_profile=user_profile).get()
+            if old_currency.currency != new_currency.currency:
+                old_currency.delete()
+                user_profile.currency = new_currency
+                new_currency.save()
+
+    return render(request,
+                  'currencies/currency-change-page.html',
+                  {'form': currency_form, 'profile_pk': pk})
