@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 
@@ -63,3 +64,40 @@ class BudgetTrackerUser(AbstractBaseUser):
     @property
     def is_staff(self):
         return self.is_admin
+
+
+UserModel = get_user_model()
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(UserModel, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.user)
+
+
+class Currency(models.Model):
+    EURO = '€ EUR'
+    DOLLAR = '$ USD'
+    BRITISH_POUND = '£ GBP'
+
+    CURRENCY_CHOICES = (
+        (EURO, EURO),
+        (DOLLAR, DOLLAR),
+        (BRITISH_POUND, BRITISH_POUND),
+    )
+
+    user_profile = models.OneToOneField(UserProfile, on_delete=models.CASCADE)
+
+    currency = models.CharField(
+        choices=CURRENCY_CHOICES,
+        default=EURO,
+        null=False,
+        blank=False
+    )
+
+    class Meta:
+        verbose_name_plural = 'Currencies'
+
+    def __str__(self):
+        return self.currency
