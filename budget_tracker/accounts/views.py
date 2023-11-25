@@ -59,6 +59,8 @@ def details_profile(request, pk):
 
 def change_currency(request, pk):
     user = request.user
+    current_currency = Currency.objects.filter(user_profile_id=pk).get()
+
     if request.method == 'GET':
         currency_form = CurrencyForm()
     else:
@@ -71,7 +73,8 @@ def change_currency(request, pk):
                 old_currency.delete()
                 user_profile.currency = new_currency
                 new_currency.save()
+                return redirect(request.META['HTTP_REFERER'])
 
     return render(request,
                   'currencies/currency-change-page.html',
-                  {'form': currency_form, 'profile_pk': pk})
+                  {'form': currency_form, 'profile_pk': pk, 'currency': current_currency})
