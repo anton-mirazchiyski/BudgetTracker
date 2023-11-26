@@ -57,9 +57,21 @@ def details_profile(request, pk):
     )
 
 
+def change_existing_currency(user_profile, new_currency):
+    old_currency = Currency.objects.filter(user_profile=user_profile).get()
+    old_currency.delete()
+    user_profile.currency = new_currency
+    new_currency.save()
+
+
+def create_new_currency(request, user_profile):
+    new_value = request.POST['currency']
+    new_currency = Currency.objects.create(user_profile=user_profile, currency=new_value)
+    new_currency.save()
+
+
 def change_currency(request, pk):
     user = request.user
-    current_currency = Currency.objects.filter(user_profile_id=pk).get()
 
     if request.method == 'GET':
         currency_form = CurrencyForm()
@@ -68,13 +80,19 @@ def change_currency(request, pk):
         if currency_form.is_valid():
             new_currency = currency_form.save(commit=False)
             user_profile = UserProfile.objects.filter(user=user).get()
-            old_currency = Currency.objects.filter(user_profile=user_profile).get()
-            if old_currency.currency != new_currency.currency:
-                old_currency.delete()
-                user_profile.currency = new_currency
-                new_currency.save()
-                return redirect(request.META['HTTP_REFERER'])
+            has_old_currency = Currency.objects.filter(user_profile=user_profile).exists()
 
+            if has_old_currency:
+                change_existing_currency(user_profile, new_currency)
+
+            if not has_old_currency:
+                create_new_currency(request, user_profile)
+
+            return redirect(request.META['HTTP_REFERER'])
+    try:
+        current_currency = Currency.objects.filter(user_profile_id=pk).get()
+    except Currency.DoesNotExist:
+        current_currency = Currency.EURO
     return render(request,
                   'currencies/currency-change-page.html',
                   {'form': currency_form, 'profile_pk': pk, 'currency': current_currency})
