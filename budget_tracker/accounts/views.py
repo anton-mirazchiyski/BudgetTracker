@@ -1,6 +1,8 @@
 from django.contrib import messages
 from django.contrib.auth import get_user_model, authenticate, login, logout
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 from django.views import generic as views
 
 from budget_tracker.accounts.forms import RegistrationForm, LoginForm, DetailsForm, CurrencyForm
@@ -13,6 +15,13 @@ class AccountCreateView(views.CreateView):
     model = UserModel
     template_name = 'accounts/account-create-page.html'
     form_class = RegistrationForm
+    success_url = reverse_lazy('accounts:login-account')
+
+    def post(self, request, *args, **kwargs):
+        super().post(request, *args, **kwargs)
+        new_user_profile = UserProfile.objects.create(user=self.object)
+        new_user_profile.save()
+        return HttpResponseRedirect(super().get_success_url())
 
 
 def login_user(request):
