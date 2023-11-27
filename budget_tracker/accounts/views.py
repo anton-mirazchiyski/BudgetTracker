@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth import get_user_model, authenticate, login, logout
+from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
@@ -11,11 +12,13 @@ from budget_tracker.accounts.models import UserProfile, Currency
 UserModel = get_user_model()
 
 
-class AccountCreateView(views.CreateView):
+class AccountCreateView(SuccessMessageMixin, views.CreateView):
     model = UserModel
     template_name = 'accounts/account-create-page.html'
     form_class = RegistrationForm
     success_url = reverse_lazy('accounts:login-account')
+
+    success_message = 'Your account was created. You can sign in.'
 
     def post(self, request, *args, **kwargs):
         super().post(request, *args, **kwargs)
