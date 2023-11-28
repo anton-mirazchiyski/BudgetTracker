@@ -102,7 +102,8 @@ def change_currency(request, pk):
 
             return redirect(request.META['HTTP_REFERER'])
     try:
-        current_currency = Currency.objects.filter(user_profile_id=pk).get()
+        user_profile = UserProfile.objects.filter(user_id=pk).get()
+        current_currency = Currency.objects.filter(user_profile=user_profile).get()
     except Currency.DoesNotExist:
         current_currency = Currency.EURO
     return render(request,
