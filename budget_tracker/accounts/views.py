@@ -86,9 +86,9 @@ def change_currency(request, pk):
     user = request.user
 
     if request.method == 'GET':
-        currency_form = CurrencyForm()
+        currency_form = CurrencyForm(request)
     else:
-        currency_form = CurrencyForm(request.POST)
+        currency_form = CurrencyForm(request, request.POST)
         if currency_form.is_valid():
             new_currency = currency_form.save(commit=False)
             user_profile = UserProfile.objects.filter(user=user).get()
