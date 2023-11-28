@@ -79,9 +79,10 @@ class CurrencyForm(forms.ModelForm):
     def __init__(self, request, *args, **kwargs):
         self.request = request
         super().__init__(*args, **kwargs)
-        user_profile = UserProfile.objects.filter(user=self.request.user).get()
+        user_profile = (UserProfile.objects.select_related('currency').
+                        filter(user=self.request.user).get())
         try:
-            user_currency = Currency.objects.filter(user_profile=user_profile).get()
+            user_currency = user_profile.currency
         except Currency.DoesNotExist:
             user_currency = Currency.EURO
         self.fields['currency'].initial = user_currency
