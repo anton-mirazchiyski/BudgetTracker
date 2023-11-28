@@ -33,6 +33,7 @@ INSTALLED_APPS = [
 
     'budget_tracker.common',
     'budget_tracker.accounts',
+    'budget_tracker.income',
 ]
 
 MIDDLEWARE = [
