@@ -3,21 +3,27 @@
         {% if not request.user.is_authenticated %}
             <ul class="nav">
                 <li class="nav-item">
-                    <a href="{% url 'common:home' %}" class="h4 text-decoration-none text-light me-5">Home</a>
+                    <a href="{% url 'common:home' %}" class="h4 text-decoration-none text-light me-5">
+                        Home
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{% url 'accounts:create-account' %}" class="text-decoration-none text-light me-4">Sign
-                        Up</a>
+                    <a href="{% url 'accounts:create-account' %}" class="text-decoration-none text-light me-4">
+                        Sign Up
+                    </a>
                 </li>
                 <li class="nav-item">
                     <span> or </span>
                 </li>
                 <li class="nav-item">
-                    <a href="{% url 'accounts:login-account' %}" class="text-decoration-none text-light ms-4">Sign
-                        In</a>
+                    <a href="{% url 'accounts:login-account' %}" class="text-decoration-none text-light ms-4">
+                        Sign In
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="text-decoration-none text-light ms-5">About</a>
+                    <a href="#" class="text-decoration-none text-light ms-5">
+                        About
+                    </a>
                 </li>
             </ul>
 
@@ -31,6 +37,16 @@
                 <li class="nav-item">
                     <a href="{% url 'accounts:details-profile' profile_pk %}" class="text-decoration-none text-light">
                         Profile
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="text-decoration-none text-light ms-5">
+                        Income
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="text-decoration-none text-light ms-5">
+                        Expenses
                     </a>
                 </li>
                 <li class="nav-item">
