@@ -8,6 +8,7 @@ from django.views import generic as views
 
 from budget_tracker.accounts.forms import RegistrationForm, LoginForm, DetailsForm, CurrencyForm
 from budget_tracker.accounts.models import UserProfile, Currency
+from budget_tracker.core.currencies_utils import change_existing_currency, create_new_currency
 
 UserModel = get_user_model()
 
@@ -67,19 +68,6 @@ def details_profile(request, pk):
         'accounts/account-details-page.html',
         {'form': form, 'profile_pk': pk}
     )
-
-
-def change_existing_currency(user_profile, new_currency):
-    old_currency = Currency.objects.filter(user_profile=user_profile).get()
-    old_currency.delete()
-    user_profile.currency = new_currency
-    new_currency.save()
-
-
-def create_new_currency(request, user_profile):
-    new_value = request.POST['currency']
-    new_currency = Currency.objects.create(user_profile=user_profile, currency=new_value)
-    new_currency.save()
 
 
 def change_currency(request, pk):
