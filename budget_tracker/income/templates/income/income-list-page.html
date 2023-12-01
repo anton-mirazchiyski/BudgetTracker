@@ -25,6 +25,8 @@
         {% endfor %}
     </div>
     <div class="d-flex justify-content-end p-3 me-5">
-        <button type="button" class="btn btn-success">Add more income</button>
+        <a href="{% url 'income:add-income' %}">
+            <button type="button" class="btn btn-success">Add more income</button>
+        </a>
     </div>
 {% endblock %}
