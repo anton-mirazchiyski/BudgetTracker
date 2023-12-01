@@ -35,7 +35,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{% url 'accounts:details-profile' profile_pk %}" class="text-decoration-none text-light">
+                    <a href="{% url 'accounts:details-profile' request.user.pk %}" class="text-decoration-none text-light">
                         Profile
                     </a>
                 </li>
