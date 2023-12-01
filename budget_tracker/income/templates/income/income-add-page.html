@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="d-flex align-items-center justify-content-center" style="height: 400px">
+        <form action="{% url 'income:add-income' %}" method="post">
+            {% for field in form %}
+                <div class="form-label">
+                    {{ field.label_tag }}
+                </div>
+                <div class="border border-2 border-secondary rounded mb-3">
+                    {{ field }}
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-warning border mt-2">Submit</button>
+        </form>
+    </div>
+{% endblock %}
