@@ -12,9 +12,15 @@
         </div>
         {% for income in object_list %}
             <div class="d-flex flex-row pb-4">
-                <div class="col">{{ income.source|capfirst }}</div>
-                <div class="col">{{ income.amount }}</div>
-                <div class="col">{{ income.submitted_on }}</div>
+                <div class="col">
+                    {{ income.source|capfirst }}
+                </div>
+                <div class="col">
+                    {{ income.amount }} {{ current_currency|make_list|first }}
+                </div>
+                <div class="col">
+                    {{ income.submitted_on }}
+                </div>
             </div>
         {% endfor %}
     </div>
