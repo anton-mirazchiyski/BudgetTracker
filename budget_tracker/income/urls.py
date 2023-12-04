@@ -1,10 +1,10 @@
 from django.urls import path
 
-from budget_tracker.income.views import IncomeListView, IncomeAddView
+from budget_tracker.income.views import IncomeListView, add_income
 
 app_name = 'income'
 
 urlpatterns = [
     path('all/', IncomeListView.as_view(), name='all-income'),
-    path('add/', IncomeAddView.as_view(), name='add-income'),
+    path('add/', add_income, name='add-income'),
 ]
