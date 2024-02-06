@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'fontawesomefree',
     'budget_tracker.common',
     'budget_tracker.accounts',
     'budget_tracker.income',
