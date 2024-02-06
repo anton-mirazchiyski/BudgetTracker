@@ -25,6 +25,8 @@ class AccountCreateView(SuccessMessageMixin, views.CreateView):
         super().post(request, *args, **kwargs)
         new_user_profile = UserProfile.objects.create(user=self.object)
         new_user_profile.save()
+        user_currency = Currency.objects.create(user_profile=new_user_profile)
+        user_currency.save()
         return HttpResponseRedirect(super().get_success_url())
 
 
