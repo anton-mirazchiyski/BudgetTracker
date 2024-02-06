@@ -1,0 +1,48 @@
+header {
+    display: flex;
+    background-color: rgb(9, 121, 105, 0.9);
+    justify-content: center;
+    padding: 1.8em 0;
+    border-bottom: 2px solid black;
+}
+
+header > p {
+    flex: 0 1 9%;
+    text-align: center;
+}
+
+header > p a {
+    text-decoration: none;
+    color: #ffe5B4;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+nav {
+    font-size: 20px;
+    flex: 1 0 auto;
+    padding-right: 10em;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    gap: 3.5em;
+}
+
+li.sign-out {
+    position: absolute;
+    right: 0;
+    padding: 0 2em;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+}
+
+nav span {
+    font-weight: bold;
+    color: #ffe5B4;
+}

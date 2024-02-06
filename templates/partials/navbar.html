@@ -1,60 +1,58 @@
-<nav class="navbar navbar-expand-lg justify-content-center py-5 navbar-light bg-secondary">
-    <div class="fs-5 me-4">
-        {% if not request.user.is_authenticated %}
-            <ul class="nav">
-                <li class="nav-item">
-                    <a href="{% url 'common:home' %}" class="h4 text-decoration-none text-light me-5">
-                        Home
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url 'accounts:create-account' %}" class="text-decoration-none text-light me-4">
-                        Sign Up
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <span> or </span>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url 'accounts:login-account' %}" class="text-decoration-none text-light ms-4">
-                        Sign In
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="text-decoration-none text-light ms-5">
-                        About
-                    </a>
-                </li>
-            </ul>
+<nav>
+    {% if not request.user.is_authenticated %}
+        <ul>
+            <li>
+                <a href="{% url 'common:home' %}">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'accounts:create-account' %}">
+                    Sign Up
+                </a>
+            </li>
+            <li>
+                <span> or </span>
+            </li>
+            <li>
+                <a href="{% url 'accounts:login-account' %}">
+                    Sign In
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    About
+                </a>
+            </li>
+        </ul>
 
-        {% else %}
-            <ul class="nav">
-                <li class="nav-item">
-                    <a href="{% url 'common:home' %}" class="h4 text-decoration-none text-light me-5">
-                        Home
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url 'accounts:details-profile' request.user.pk %}" class="text-decoration-none text-light">
-                        Profile
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url 'income:all-income' %}" class="text-decoration-none text-light ms-5">
-                        Income
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="text-decoration-none text-light ms-5">
-                        Expenses
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{% url 'accounts:logout-account' %}" class="text-decoration-none text-light ms-5">
-                        Sign Out
-                    </a>
-                </li>
-            </ul>
-        {% endif %}
-    </div>
+    {% else %}
+        <ul class="logged-in-list">
+            <li>
+                <a href="{% url 'common:home' %}">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'accounts:details-profile' request.user.pk %}">
+                    Profile
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'income:all-income' %}" class="content-nav-link">
+                    Income
+                </a>
+            </li>
+            <li>
+                <a href="#" class="content-nav-link">
+                    Expenses
+                </a>
+            </li>
+            <li class="sign-out">
+                <a href="{% url 'accounts:logout-account' %}">
+                    Sign Out
+                </a>
+            </li>
+        </ul>
+    {% endif %}
 </nav>
