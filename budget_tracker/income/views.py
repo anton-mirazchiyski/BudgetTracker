@@ -3,7 +3,7 @@ from django.views import generic as views
 
 from budget_tracker.core.accounts_utils import get_user_profile
 from budget_tracker.core.currencies_utils import get_current_currency
-from budget_tracker.income.forms import IncomeForm
+from budget_tracker.income.forms import IncomeAddForm
 from budget_tracker.income.models import Income
 
 
@@ -25,14 +25,14 @@ class IncomeListView(views.ListView):
 def add_income(request):
     current_currency = get_current_currency(request)
     if request.method == 'POST':
-        form = IncomeForm(request.POST)
+        form = IncomeAddForm(request.POST)
         if form.is_valid():
             user_profile = get_user_profile(request)
             source_of_income = request.POST['source']
             amount_of_income = request.POST['amount']
             user_profile.income_set.create(source=source_of_income, amount=amount_of_income, currency=current_currency)
             return redirect('income:all-income')
-    form = IncomeForm()
+    form = IncomeAddForm()
     return render(request, 'income/income-add-page.html', {
         'form': form, 'current_currency': current_currency
     })

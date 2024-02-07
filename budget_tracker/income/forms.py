@@ -3,7 +3,7 @@ from django import forms
 from budget_tracker.income.models import Income
 
 
-class IncomeForm(forms.ModelForm):
+class IncomeAddForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field in self.fields:

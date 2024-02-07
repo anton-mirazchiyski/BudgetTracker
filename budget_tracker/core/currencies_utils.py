@@ -17,5 +17,5 @@ def create_new_currency(request, user_profile):
 def get_current_currency(request):
     user = request.user
     user_profile = UserProfile.objects.select_related('currency').filter(user=user).get()
-    current_currency = user_profile.currency
+    current_currency = user_profile.currency.currency
     return current_currency
