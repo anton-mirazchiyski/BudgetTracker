@@ -1,32 +1,40 @@
 {% extends 'base.html' %}
 
+{% block title %} Income Tracking {% endblock %}
+
 {% block content %}
-    <div class="d-flex justify-content-center p-4 me-3">
-        <h3>Your currently logged income</h3>
-    </div>
-    <div class="p-4 ms-4">
-        <div class="d-flex flex-row pb-3">
-            <div class="col"><b>Source of income:</b></div>
-            <div class="col"><b>Amount:</b></div>
-            <div class="col"><b>Submitted on:</b></div>
-        </div>
+    <h3 class="income-list-heading">Your currently logged income</h3>
+    <div class="income-container">
+        <ul class="income-info-list">
+            <li>
+                <b>Source of income:</b>
+            </li>
+            <li>
+                <b>Amount:</b>
+            </li>
+            <li>
+                <b>Submitted on:</b>
+            </li>
+            <li>
+                <b>Remove:</b>
+            </li>
+        </ul>
         {% for income in object_list %}
-            <div class="d-flex flex-row pb-4">
-                <div class="col">
+            <ul class="income-data-list">
+                <li>
                     {{ income.source|capfirst }}
-                </div>
-                <div class="col">
+                </li>
+                <li>
                     {{ income.amount }} {{ current_currency|make_list|first }}
-                </div>
-                <div class="col">
+                </li>
+                <li>
                     {{ income.submitted_on }}
-                </div>
-            </div>
+                </li>
+                <li>
+                    <a href="#"><i class="fa-solid fa-xmark"></i></a>
+                </li>
+            </ul>
         {% endfor %}
     </div>
-    <div class="d-flex justify-content-end p-3 me-5">
-        <a href="{% url 'income:add-income' %}">
-            <button type="button" class="btn btn-success">Add more income</button>
-        </a>
-    </div>
+    <a href="{% url 'income:add-income' %}" class="add-income-button">Add more Income</a>
 {% endblock %}
