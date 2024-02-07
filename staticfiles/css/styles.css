@@ -1,0 +1,8 @@
+@import "pages/income-list-page.css";
+@import "buttons.css";
+@import "header-and-navigation.css";
+
+.form-control {
+    width: 17rem;
+    height: 3rem;
+}
