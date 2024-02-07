@@ -31,7 +31,7 @@
                     {{ income.submitted_on }}
                 </li>
                 <li>
-                    <a href="#"><i class="fa-solid fa-xmark"></i></a>
+                    <a href="{% url 'income:delete-income' income.pk %}"><i class="fa-solid fa-xmark"></i></a>
                 </li>
             </ul>
         {% endfor %}

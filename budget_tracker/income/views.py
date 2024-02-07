@@ -36,3 +36,10 @@ def add_income(request):
     return render(request, 'income/income-add-page.html', {
         'form': form, 'current_currency': current_currency
     })
+
+
+def delete_income(request, pk):
+    user_profile = get_user_profile(request)
+    income = user_profile.income_set.filter(pk=pk).get()
+    income.delete()
+    return redirect('income:all-income')
