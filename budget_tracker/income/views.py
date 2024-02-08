@@ -30,7 +30,9 @@ def add_income(request):
             user_profile = get_user_profile(request)
             source_of_income = request.POST['source']
             amount_of_income = request.POST['amount']
-            user_profile.income_set.create(source=source_of_income, amount=amount_of_income, currency=current_currency)
+            type_of_income = request.POST['type']
+            user_profile.income_set.create(source=source_of_income, amount=amount_of_income, type=type_of_income,
+                                           currency=current_currency)
             return redirect('income:all-income')
     form = IncomeAddForm()
     return render(request, 'income/income-add-page.html', {

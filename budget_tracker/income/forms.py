@@ -11,9 +11,10 @@ class IncomeAddForm(forms.ModelForm):
 
     class Meta:
         model = Income
-        fields = ('source', 'amount')
+        fields = ('source', 'amount', 'type')
 
         labels = {
             'source': 'Source of Income',
-            'amount': 'Amount'
+            'amount': 'Amount',
+            'type': 'Type of Income',
         }

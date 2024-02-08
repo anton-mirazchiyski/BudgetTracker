@@ -13,6 +13,9 @@
                 <b>Amount:</b>
             </li>
             <li>
+                <b>Type:</b>
+            </li>
+            <li>
                 <b>Submitted on:</b>
             </li>
             <li>
@@ -26,6 +29,9 @@
                 </li>
                 <li>
                     {{ income.amount }} {{ current_currency|make_list|first }}
+                </li>
+                <li>
+                    {{ income.type }}
                 </li>
                 <li>
                     {{ income.submitted_on }}
