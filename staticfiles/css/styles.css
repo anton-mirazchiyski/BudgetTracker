@@ -1,6 +1,13 @@
 @import "pages/income-list-page.css";
 @import "buttons.css";
 @import "header-and-navigation.css";
+@import "footer.css";
+
+.primary-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
 
 .form-control {
     width: 17rem;
