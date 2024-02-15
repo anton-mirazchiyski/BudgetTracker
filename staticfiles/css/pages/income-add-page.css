@@ -1,0 +1,62 @@
+.add-income-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+}
+
+.income-form-label,
+.income-form-input {
+    display: block;
+}
+
+.add-income-container p {
+    margin-bottom: 1.3em;
+}
+
+.income-form-label {
+    padding-bottom: 0.5em;
+}
+
+.income-form-input {
+    width: 120%;
+    height: 2.8em;
+    border: 2px solid #000;
+    border-radius: 0.6em;
+    outline: none;
+    font-size: 16px;
+    font-weight: 500;
+    text-indent: 20px;
+}
+
+.add-income-container p:nth-child(3) .income-form-input {
+    text-indent: 10px;
+}
+
+.income-form-input:focus {
+    border-color: rgb(33, 134, 120);
+}
+
+.add-income-container button {
+    display: block;
+    border: 2px solid black;
+    border-radius: 0.5em;
+    padding: 0.5em;
+    background-color: rgb(255, 229, 165);
+    color: #000;
+    min-width: 50%;
+    cursor: pointer;
+    margin-top: 2em;
+    font-size: 1em;
+}
+
+.money-icon-container {
+    display: flex;
+    justify-content: center;
+    max-width: 50vw;
+    font-size: 3em;
+}
+
+.money-icon-container div {
+    color: rgb(33, 134, 120);
+}
