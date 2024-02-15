@@ -5,24 +5,22 @@
 {% block content %}
     <h2 class="heading add-income-heading">Log new income</h2>
 
-    <div class="money-icon-container">
-        <div><i class="fa-solid fa-money-bill-trend-up"></i></div>
-    </div>
-
     <div class="add-income-container">
+        <p><i class="fa-solid fa-coins"></i></p>
+
         <form action="{% url 'income:add-income' %}" method="post">
-            <p>
+            <div>
                 <label class="income-form-label">{{ form.source.label }}</label>
                 {{ form.source }}
-            </p>
-            <p>
+            </div>
+            <div>
                 <label class="income-form-label">{{ form.amount.label }}</label>
-                {{ form.amount }}<span>{{ current_currency|make_list|first }}</span>
-            </p>
-            <p>
+                <div class="income-amount"><span>{{ form.amount }}</span><span>{{ current_currency|make_list|first }}</span></div>
+            </div>
+            <div>
                 <label class="income-form-label">{{ form.type.label }}</label>
                 {{ form.type }}
-            </p>
+            </div>
             <button type="submit">Add</button>
             {% csrf_token %}
         </form>
