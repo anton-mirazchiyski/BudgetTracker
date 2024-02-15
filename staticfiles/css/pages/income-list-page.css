@@ -7,7 +7,8 @@
 
 .income-container {
     position: relative;
-    margin-left: 1.5em;
+    margin-left: 1.7em;
+    font-weight: 500;
 }
 
 .income-container > ul{
@@ -23,7 +24,7 @@
 .income-container li {
     flex: 1 0 15%;
     max-width: 20vw;
-    padding-bottom: 1em;
+    padding-bottom: 1.3em;
 }
 
 .income-data-list a {

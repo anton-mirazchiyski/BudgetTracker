@@ -20,6 +20,13 @@ body {
     min-height: 100vh;
 }
 
+.heading {
+    text-align: center;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    font-weight: 600;
+}
+
 .form-control {
     width: 17rem;
     height: 3rem;
