@@ -1,33 +1,9 @@
-@import 'https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap';
-
 @import "reset.css";
+@import "layout.css";
 @import "parts/header-and-navigation.css";
 @import "parts/footer.css";
+@import "elements/forms.css";
+@import "elements/buttons.css";
+@import "pages/account-create-page.css";
 @import "pages/income-list-page.css";
 @import "pages/income-add-page.css";
-@import "elements/buttons.css";
-
-body {
-    font-size: 16px;
-    line-height: 1.5;
-    font-family: "Open Sans", "Arial", sans-serif;
-    font-weight: normal;
-}
-
-.primary-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-.heading {
-    text-align: center;
-    padding: 0.5em;
-    margin-bottom: 1em;
-    font-weight: 600;
-}
-
-.form-control {
-    width: 17rem;
-    height: 3rem;
-}
