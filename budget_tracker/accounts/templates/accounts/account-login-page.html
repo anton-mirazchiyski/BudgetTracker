@@ -3,18 +3,22 @@
 {% block title %} Budget Tracker - Account Login {% endblock %}
 
 {% block content %}
-    <div class="d-flex align-items-center justify-content-center mt-5 me-4" style="height: 500px">
+    <h2 class="heading login-heading">Login</h2>
+    
+    <div class="centered-container login-container">
         <form action="{% url 'accounts:login-account' %}" method="post">
-            <h2 class="pb-2">Sign in</h2>
             {% for field in form %}
-                <div class="mb-3 border border-2 border-secondary rounded">
+                <div class="form-label login-label">
+                    {{ field.label }}
+                </div>
+                <div class="login-field-div">
                     {{ field }}
                 </div>
             {% endfor %}
-            <button type="submit" class="btn btn-success">Login</button>
+            <button type="submit" class="login-button">Enter</button>
             {% csrf_token %}
             {% for message in messages %}
-                <div class="alert alert-danger text-wrap" style="width: 17rem">
+                <div class="registration-success-message">
                     {{ message }}
                 </div>
             {% endfor %}
