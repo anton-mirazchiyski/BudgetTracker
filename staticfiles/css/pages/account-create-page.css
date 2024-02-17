@@ -1,0 +1,53 @@
+.registration-heading {
+    margin-top: 1.2em;
+}
+
+.registration-container {
+    min-height: 40vh;
+    margin-left: -1em;
+}
+
+.registration-form-input {
+    width: 120%;
+    max-width: 120%;
+    border: 2px solid #000;
+    border-radius: 0.7em;
+}
+
+.reg-form-div {
+    margin-bottom: 0.7em;
+}
+
+.reg-form-label {
+    padding-bottom: 0.5em;
+    font-weight: 500;
+}
+
+.registration-container button {
+    display: block;
+    border: 2px solid black;
+    border-radius: 0.5em;
+    padding: 0.5em 0.9em;
+    background-color: rgb(255, 229, 165);
+    color: #000;
+    min-width: 50%;
+    cursor: pointer;
+    margin: 2em 0;
+    font-size: 1em;
+}
+
+.login-info-div {
+    font-weight: 600;
+}
+
+.login-extra-link {
+    color: #218678;
+}
+
+.registration-form-input:focus {
+    border-color: #218678;
+}
+
+div.registration-errors {
+    border: 2px solid black;
+}
