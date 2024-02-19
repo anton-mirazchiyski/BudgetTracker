@@ -18,9 +18,15 @@
             <button type="submit" class="login-button">Enter</button>
             {% csrf_token %}
             {% for message in messages %}
-                <div class="registration-success-message">
+                {% if message.tags == 'success' %}
+                    <div class="registration-success-message">
+                        {{ message }}
+                    </div>
+                {% else %}
+                <div class="login-errors form-errors">
                     {{ message }}
                 </div>
+                {% endif %}
             {% endfor %}
         </form>
     </div>

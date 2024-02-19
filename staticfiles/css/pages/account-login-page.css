@@ -15,5 +15,6 @@
 .login-button {
     margin: 1.5em 0;
     padding: 0.4em 0.6em;
-    background-color: lightgreen;
+    background-color: #97f416;
+    font-weight: 500;
 }
