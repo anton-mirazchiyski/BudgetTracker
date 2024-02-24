@@ -19,15 +19,18 @@ class AccountCreateView(SuccessMessageMixin, views.CreateView):
     form_class = RegistrationForm
     success_url = reverse_lazy('accounts:login-account')
 
-    success_message = 'Your account was created. You can sign in.'
+    success_message = 'Your account was created. You can log in.'
 
     def post(self, request, *args, **kwargs):
         super().post(request, *args, **kwargs)
-        new_user_profile = UserProfile.objects.create(user=self.object)
+        self.create_profile_and_currency()
+        return HttpResponseRedirect(super().get_success_url())
+
+    def create_profile_and_currency(self):
+        new_user_profile = UserProfile.objects.create(user=self.object, user_id=self.object.pk)
         new_user_profile.save()
         user_currency = Currency.objects.create(user_profile=new_user_profile)
         user_currency.save()
-        return HttpResponseRedirect(super().get_success_url())
 
 
 def login_user(request):
