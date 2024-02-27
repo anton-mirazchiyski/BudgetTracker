@@ -1,0 +1,25 @@
+.expenses-container {
+    margin-left: 4em;
+}
+
+.expenses-info-list,
+.expenses-data-list {
+    display: flex;
+    gap: 3em;
+    list-style-type: none;
+}
+
+.expenses-info-list {
+    margin-bottom: 2em;
+}
+
+.expenses-container li {
+    flex: 1 0 15%;
+    max-width: 20vw;
+    padding-bottom: 1.3em;
+}
+
+.expenses-data-list a {
+    color: #14A44D;
+    font-size: 20px;
+}

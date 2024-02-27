@@ -3,5 +3,38 @@
 {% block title %} Expense Tracking {% endblock %}
 
 {% block content %}
+    <h2 class="heading">Your current expenses</h2>
 
+    <div class="expenses-container">
+        <ul class="expenses-info-list">
+            <li>
+                <b>Description:</b>
+            </li>
+            <li>
+                <b>Amount:</b>
+            </li>
+            <li>
+                <b>Date:</b>
+            </li>
+            <li>
+                <b>Remove:</b>
+            </li>
+        </ul>
+        {% for expense in object_list %}
+            <ul class="expenses-data-list">
+                <li class="expense-description">
+                    {{ expense.description|capfirst }}
+                </li>
+                <li>
+                    {{ expense.amount }} {{ current_currency|make_list|first }}
+                </li>
+                <li>
+                    {{ expense.date }}
+                </li>
+                <li>
+                    <a href="#"><i class="fa-solid fa-xmark"></i></a>
+                </li>
+            </ul>
+        {% endfor %}
+    </div>
 {% endblock %}
