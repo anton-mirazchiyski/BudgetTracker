@@ -1,5 +1,6 @@
 .expenses-container {
     margin-left: 4em;
+    position: relative;
 }
 
 .expenses-info-list,
@@ -19,7 +20,17 @@
     padding-bottom: 1.3em;
 }
 
+.expense-amount {
+    margin-left: 2em;
+}
+
 .expenses-data-list a {
     color: #14A44D;
     font-size: 20px;
+}
+
+.add-expense-button {
+    position: absolute;
+    right: 0;
+    margin-right: 7em;
 }

@@ -10,7 +10,7 @@
             <li>
                 <b>Description:</b>
             </li>
-            <li>
+            <li class="expense-amount">
                 <b>Amount:</b>
             </li>
             <li>
@@ -25,7 +25,7 @@
                 <li class="expense-description">
                     {{ expense.description|capfirst }}
                 </li>
-                <li>
+                <li class="expense-amount">
                     {{ expense.amount }} {{ current_currency|make_list|first }}
                 </li>
                 <li>
@@ -37,4 +37,5 @@
             </ul>
         {% endfor %}
     </div>
+    <a href="#" class="button add-expense-button">Add expense</a>
 {% endblock %}
