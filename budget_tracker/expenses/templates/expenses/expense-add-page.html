@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %} Add new Expense {% endblock %}
+
+{% block content %}
+    <h2 class="heading">Add an expense</h2>
+    <div class="centered-container add-expenses-container">
+        <form action="{% url 'expenses:add-expense' %}" method="post">
+            <div class="add-expense-description">
+                <div class="add-expense-label"><label>{{ form.description.label_tag }}</label></div>
+                <div>{{ form.description }}</div>
+            </div>
+
+            <div class="add-expense-amount">
+                <div class="add-expense-label"><label>{{ form.amount.label_tag }}</label></div>
+                <div>{{ form.amount }}</div>
+            </div>
+
+            <div class="add-expense-date">
+                <div class="add-expense-label"><label>{{ form.date.label_tag }}</label></div>
+                <div>{{ form.date}}</div>
+            </div>
+            <button type="submit">Add</button>
+            {% csrf_token %}
+        </form>
+    </div>
+{% endblock %}
