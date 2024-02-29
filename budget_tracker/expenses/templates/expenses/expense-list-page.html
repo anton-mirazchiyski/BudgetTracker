@@ -37,5 +37,5 @@
             </ul>
         {% endfor %}
     </div>
-    <a href="#" class="button add-expense-button">Add expense</a>
+    <a href="{% url 'expenses:add-expense' %}" class="button add-expense-button">Add expense</a>
 {% endblock %}
