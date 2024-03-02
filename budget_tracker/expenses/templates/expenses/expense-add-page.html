@@ -13,7 +13,10 @@
 
             <div class="add-expense-amount">
                 <div class="add-expense-label"><label>{{ form.amount.label_tag }}</label></div>
-                <div>{{ form.amount }}</div>
+                <div class="add-expense-amount-with-currency">
+                    <div>{{ form.amount }}</div>
+                    <div class="add-expense-currency">{{ current_currency|make_list|first }}</div>
+                </div>
             </div>
 
             <div class="add-expense-date">

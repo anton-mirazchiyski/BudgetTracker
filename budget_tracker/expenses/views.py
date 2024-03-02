@@ -23,15 +23,19 @@ class ExpenseListView(views.ListView):
 
 
 def add_expense(request):
+    current_currency = get_current_currency(request)
+
     if request.method == 'POST':
         form = ExpenseAddForm(request.POST)
         if form.is_valid():
             expense = form.save(commit=False)
             profile = get_user_profile(request)
-            expense.currency = get_current_currency(request)
+            expense.currency = current_currency
             expense.profile = profile
             expense.save()
             return redirect('expenses:all-expenses')
     form = ExpenseAddForm()
 
-    return render(request, 'expenses/expense-add-page.html', {'form': form})
+    return render(request,
+                  'expenses/expense-add-page.html',
+                  {'form': form, 'current_currency': current_currency})

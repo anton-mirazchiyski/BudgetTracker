@@ -32,3 +32,13 @@
     min-width: 30%;
     margin-top: 2em;
 }
+
+.add-expense-amount-with-currency {
+    display: flex;
+    gap: 0.5em;
+}
+
+.add-expense-currency {
+    font-size: 1.4em;
+    align-self: center;
+}
