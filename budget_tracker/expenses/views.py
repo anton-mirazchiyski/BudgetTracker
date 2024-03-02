@@ -39,3 +39,10 @@ def add_expense(request):
     return render(request,
                   'expenses/expense-add-page.html',
                   {'form': form, 'current_currency': current_currency})
+
+
+def delete_expense(request, pk):
+    profile = get_user_profile(request)
+    expense = profile.expense_set.filter(pk=pk).get()
+    expense.delete()
+    return redirect('expenses:all-expenses')

@@ -32,7 +32,7 @@
                     {{ expense.date }}
                 </li>
                 <li>
-                    <a href="#"><i class="fa-solid fa-xmark"></i></a>
+                    <a href="{% url 'expenses:delete-expense' expense.pk %}"><i class="fa-solid fa-xmark"></i></a>
                 </li>
             </ul>
         {% endfor %}
