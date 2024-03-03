@@ -1,4 +1,3 @@
-from django.core.validators import MinValueValidator
 from django.db import models
 
 from budget_tracker.accounts.models import UserProfile, Currency
@@ -18,7 +17,7 @@ class Income(models.Model):
 
     source = models.CharField(max_length=30, null=False, blank=False)
 
-    amount = models.FloatField(validators=[MinValueValidator(0)], null=False, blank=False)
+    amount = models.DecimalField(max_digits=7, decimal_places=2, null=False, blank=False)
 
     type = models.CharField(max_length=30, choices=INCOME_CHOICES, null=False, blank=False)
 
