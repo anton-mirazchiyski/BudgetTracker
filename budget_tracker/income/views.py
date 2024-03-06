@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import generic as views
 
 from budget_tracker.core.accounts_utils import get_user_profile
+from budget_tracker.core.common_utils import add_to_balance, subtract_from_balance
 from budget_tracker.core.currencies_utils import get_current_currency
 from budget_tracker.income.forms import IncomeAddForm
 from budget_tracker.income.models import Income
@@ -24,15 +25,16 @@ class IncomeListView(views.ListView):
 
 def add_income(request):
     current_currency = get_current_currency(request)
+    user_profile = get_user_profile(request)
+
     if request.method == 'POST':
         form = IncomeAddForm(request.POST)
         if form.is_valid():
-            user_profile = get_user_profile(request)
-            source_of_income = request.POST['source']
-            amount_of_income = request.POST['amount']
-            type_of_income = request.POST['type']
-            user_profile.income_set.create(source=source_of_income, amount=amount_of_income, type=type_of_income,
-                                           currency=current_currency)
+            income = form.save(commit=False)
+            income.profile = user_profile
+            income.currency = current_currency
+            income.save()
+            add_to_balance(user_profile, income.amount)
             return redirect('income:all-income')
     form = IncomeAddForm()
     return render(request, 'income/income-add-page.html', {
@@ -43,5 +45,6 @@ def add_income(request):
 def delete_income(request, pk):
     user_profile = get_user_profile(request)
     income = user_profile.income_set.filter(pk=pk).get()
+    subtract_from_balance(user_profile, income.amount)
     income.delete()
     return redirect('income:all-income')

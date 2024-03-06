@@ -34,7 +34,7 @@ def calculate_balance(profile):
 
 def show_balance(request):
     profile = get_user_profile(request)
-    balance = calculate_balance(profile)
+    balance = profile.balance
     context = {'balance': balance}
 
     return render(request,'common/balance-page.html', context)
