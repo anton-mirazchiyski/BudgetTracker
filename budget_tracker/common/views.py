@@ -19,19 +19,6 @@ def index(request):
     )
 
 
-def calculate_balance(profile):
-    all_income = profile.income_set.all()
-    sum_of_income = sum([income.amount for income in all_income])
-    all_expenses = profile.expense_set.all()
-    sum_of_expenses = sum([expense.amount for expense in all_expenses])
-
-    if sum_of_income - sum_of_expenses < 0:
-        current_balance = 0
-    else:
-        current_balance = sum_of_income - sum_of_expenses
-    return current_balance
-
-
 def show_balance(request):
     profile = get_user_profile(request)
     balance = profile.balance
