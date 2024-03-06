@@ -119,3 +119,8 @@ class Balance(models.Model):
 
     def __str__(self):
         return f'{self.currency} {self.amount}'
+
+    def save(self, *args, **kwargs):
+        if self.amount < 0:
+            self.amount = 0
+        super(Balance, self).save(*args, **kwargs)
