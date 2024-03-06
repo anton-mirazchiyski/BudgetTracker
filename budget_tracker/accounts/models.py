@@ -109,7 +109,6 @@ class Balance(models.Model):
 
     amount = models.DecimalField(
         max_digits=10, decimal_places=2,
-        validators=[DecimalValidator],
         null=False, blank=False
     )
 
