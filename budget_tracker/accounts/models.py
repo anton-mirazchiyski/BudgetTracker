@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from django.core.validators import DecimalValidator
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 
@@ -101,3 +102,21 @@ class Currency(models.Model):
 
     def __str__(self):
         return self.currency
+
+
+class Balance(models.Model):
+    user_profile = models.OneToOneField(UserProfile, on_delete=models.CASCADE)
+
+    amount = models.DecimalField(
+        max_digits=10, decimal_places=2,
+        validators=[DecimalValidator],
+        null=False, blank=False
+    )
+
+    currency = models.OneToOneField(Currency, on_delete=models.PROTECT)
+
+    class Meta:
+        verbose_name_plural = 'Balance'
+
+    def __str__(self):
+        return f'{self.currency} {self.amount}'
