@@ -3,5 +3,11 @@
 {% block title %} Your Current Balance {% endblock %}
 
 {% block content %}
-    <h3 class="heading">{{ balance.amount }}</h3>
+    <div class="card-element">
+        <h1>Current Balance</h1>
+        <div class="balance-container">
+            <h2>{{ balance.currency|make_list|first }}{{ balance.amount }}</h2>
+            <p>Total Balance</p>
+        </div>
+    </div>
 {% endblock %}
