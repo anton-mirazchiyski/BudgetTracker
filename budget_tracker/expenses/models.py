@@ -12,6 +12,8 @@ class Expense(models.Model):
 
     currency = models.CharField(max_length=30, null=False, blank=True)
 
+    created_at = models.DateTimeField(auto_now_add=True)
+
     profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
 
     def __str__(self):

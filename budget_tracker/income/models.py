@@ -26,6 +26,8 @@ class Income(models.Model):
 
     date = models.DateField(default=date.today, null=False, blank=True)
 
+    created_at = models.DateTimeField(auto_now_add=True)
+
     profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
 
     def __str__(self):
