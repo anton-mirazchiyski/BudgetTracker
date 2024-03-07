@@ -33,9 +33,9 @@
 .recent-transaction i {
     align-self: center;
     font-size: 1.2em;
+    color: #0a58ca;
 }
 
 .recent-transaction-date {
     padding-top: 0.5em;
-    font-weight: 300;
 }
