@@ -19,9 +19,21 @@ def index(request):
     )
 
 
+def get_recent_transactions(profile):
+    all_income = profile.income_set.all().order_by('-date')
+    all_expenses = profile.expense_set.all().order_by('-date')
+    all_transactions = list(all_income) + list(all_expenses)
+    sorted_transactions = sorted(all_transactions, key=lambda x: x.date, reverse=True)[:5]
+    return sorted_transactions
+
+
 def show_balance(request):
     profile = get_user_profile(request)
     balance = profile.balance
-    context = {'balance': balance}
+    transactions = get_recent_transactions(profile)
+    context = {
+        'balance': balance,
+        'transactions': transactions
+    }
 
     return render(request,'common/balance-page.html', context)
