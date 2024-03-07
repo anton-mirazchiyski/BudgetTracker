@@ -27,3 +27,6 @@ class Income(models.Model):
     date = models.DateField(default=date.today, null=False, blank=True)
 
     profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.amount}{self.currency} - {self.date}'
