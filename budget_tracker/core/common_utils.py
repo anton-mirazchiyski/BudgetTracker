@@ -16,3 +16,11 @@ def subtract_from_balance(profile, amount):
     balance = get_current_balance(profile)
     balance.amount -= amount
     balance.save()
+
+
+def get_recent_transactions(profile):
+    all_income = profile.income_set.all()
+    all_expenses = profile.expense_set.all()
+    all_transactions = list(all_income) + list(all_expenses)
+    sorted_transactions = sorted(all_transactions, key=lambda x: x.created_at, reverse=True)[:4]
+    return sorted_transactions
