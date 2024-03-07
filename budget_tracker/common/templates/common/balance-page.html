@@ -9,5 +9,26 @@
             <h2>{{ balance.currency|make_list|first }}{{ balance.amount }}</h2>
             <p>Total Balance</p>
         </div>
+        <div class="recent-transactions-container">
+            <h2>Recent Transactions</h2>
+            {% for transaction in transactions %}
+                <div class="recent-transaction">
+                    {% if transaction.source %}
+                        <span>+</span>
+                    {% else %}
+                        <span>-</span>
+                    {% endif %}
+                    <i class="fa-regular fa-credit-card"></i>
+                    <div>
+                        <p class="recent-transaction-amount">
+                            {{ transaction.currency|make_list|first }}{{ transaction.amount }}
+                        </p>
+                        <p class="recent-transaction-date">
+                            {{ transaction.date|date:"F j" }}
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

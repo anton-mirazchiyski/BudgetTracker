@@ -18,3 +18,24 @@
 .balance-container p {
     font-size: 0.9em;
 }
+
+.recent-transaction {
+    display: flex;
+    padding: 1.5em;
+    gap: 1.8em;
+}
+
+.recent-transaction span {
+    align-self: center;
+    font-size: 1.5em;
+}
+
+.recent-transaction i {
+    align-self: center;
+    font-size: 1.2em;
+}
+
+.recent-transaction-date {
+    padding-top: 0.5em;
+    font-weight: 300;
+}
