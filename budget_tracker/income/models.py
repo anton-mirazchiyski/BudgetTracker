@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import date
 
 from budget_tracker.accounts.models import UserProfile, Currency
 
@@ -23,6 +24,6 @@ class Income(models.Model):
 
     currency = models.CharField(max_length=30, null=True, blank=True)
 
-    submitted_on = models.DateTimeField(auto_now_add=True)
+    date = models.DateField(default=date.today, null=False, blank=True)
 
     profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
