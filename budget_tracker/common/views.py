@@ -6,18 +6,8 @@ from budget_tracker.core.accounts_utils import get_user_profile
 from budget_tracker.core.common_utils import get_recent_transactions
 
 
-def index(request):
-    try:
-        current_user_profile = request.user
-        profile_pk = current_user_profile.pk
-    except ObjectDoesNotExist:
-        current_user_profile, profile_pk = None, None
-
-    return render(
-        request,
-        'common/home-page.html',
-        {'profile_pk': profile_pk}
-    )
+class IndexView(views.TemplateView):
+    template_name = 'common/home-page.html'
 
 
 def show_balance(request):
