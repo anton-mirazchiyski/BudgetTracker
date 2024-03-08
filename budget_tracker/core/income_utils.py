@@ -14,3 +14,11 @@ def find_highest_income_for_the_month(profile):
             highest_income = income
 
     return highest_income
+
+
+def calc_total_income_for_the_current_month(profile):
+    current_month = get_current_month()
+    income_for_the_month = profile.income_set.filter(date__month=current_month)
+    total_income = sum([income.amount for income in income_for_the_month])
+
+    return total_income
