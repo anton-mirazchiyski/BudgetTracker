@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from budget_tracker.accounts.models import Balance
 
 
@@ -24,3 +26,8 @@ def get_recent_transactions(profile):
     all_transactions = list(all_income) + list(all_expenses)
     sorted_transactions = sorted(all_transactions, key=lambda x: x.created_at, reverse=True)[:4]
     return sorted_transactions
+
+
+def get_current_month():
+    current_month = datetime.today().month
+    return current_month
