@@ -43,11 +43,19 @@
         {% endfor %}
     </div>
     <a href="{% url 'income:add-income' %}" class="button add-income-button">Add more Income</a>
+    <div class="income-calculations">
     <div class="highest-monthly-income">
         <h3>Highest income of the month is:</h3>
         <p>
             {{ highest_income.source|capfirst }} --- <strong>{{ highest_income.amount }}
             {{ current_currency|make_list|first }}</strong>
         </p>
+    </div>
+    <div class="total-monthly-income">
+        <h3>Total income for this month:</h3>
+        <p>
+            <strong>{{ total_income }} {{ current_currency|make_list|first}}</strong>
+        </p>
+    </div>
     </div>
 {% endblock %}
