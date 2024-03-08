@@ -1,8 +1,7 @@
 .income-list-heading {
     text-align: center;
     padding: 0.5em;
-    margin-bottom: 1em;
-    font-weight: 600;
+    margin-bottom: 1.5em;
 }
 
 .income-container {
@@ -35,4 +34,19 @@
     position: absolute;
     right: 0;
     margin-right: 7em;
+}
+
+.highest-monthly-income {
+    max-width: 30vw;
+    text-align: center;
+    margin-top: 4em;
+    padding: 1em;
+}
+
+.highest-monthly-income h3 {
+    font-weight: 600;
+}
+
+.highest-monthly-income p {
+    color: #218678;
 }
