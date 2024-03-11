@@ -1,0 +1,9 @@
+#chart-container {
+    display: flex;
+    gap: 5em;
+    margin-top: 2em;
+}
+
+.doughnut-chart {
+    min-width: 25vw;
+}
