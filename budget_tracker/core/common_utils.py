@@ -1,6 +1,8 @@
+from calendar import month_name
 from datetime import datetime
 
 from budget_tracker.accounts.models import Balance
+from budget_tracker.income.models import Income
 
 
 def get_current_balance(profile):
@@ -31,3 +33,20 @@ def get_recent_transactions(profile):
 def get_current_month():
     current_month = datetime.today().month
     return current_month
+
+
+def calculate_income_over_the_months(profile):
+    all_income = Income.objects.filter(profile=profile).order_by('date')
+    months = []
+    amounts = []
+
+    for income in all_income:
+        current_month = income.date.month
+        if current_month not in months:
+            months.append(current_month)
+        amount_per_month = sum([income.amount for income in all_income if income.date.month == current_month])
+        if amount_per_month not in amounts:
+            amounts.append(amount_per_month)
+
+    months = [month_name[month] for month in months]
+    return months, amounts
