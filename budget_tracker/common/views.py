@@ -24,15 +24,21 @@ def show_dashboard(request):
     all_income = Income.objects.filter(profile=profile).order_by('date')
     months = []
     amounts = []
-    amount_per_month = 0
+
     for income in all_income:
         current_month = income.date.month
         if current_month not in months:
             months.append(current_month)
+        amount_per_month = sum([income.amount for income in all_income if income.date.month == current_month])
+        if amount_per_month not in amounts:
+            amounts.append(amount_per_month)
 
     months = [month_mapper()[month] for month in months]
+
     labels = months
-    context = {'labels': labels}
+    data = [int(amount) for amount in amounts]
+
+    context = {'labels': labels, 'data': data}
 
     return render(request, 'common/dashboard.html', context)
 
