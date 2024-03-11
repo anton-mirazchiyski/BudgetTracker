@@ -16,17 +16,22 @@
                 labels: {{ labels|safe }},
                 datasets: [
                     {
-                        label: "Gross volume ($)",
-                        backgroundColor: "#79AEC8",
+                        label: "Gross amount ({{ currency|safe }})",
+                        backgroundColor: [
+                            "#79AEC8",
+                            {#"#14A44D",#}
+                        ],
                         borderColor: "#417690",
                         data: {{ data|safe }}
                     }
                 ]
             },
             options: {
-                title: {
-                    text: "Gross Volume in 2020",
-                    display: true
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Income over time'
+                    }
                 }
             }
         });
