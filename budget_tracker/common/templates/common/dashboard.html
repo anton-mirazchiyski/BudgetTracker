@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% block title %} Your Financial Overview {% endblock %}
+
 {% block content %}
     <div id="chart-container">
         <div>
@@ -18,22 +20,38 @@
                 labels: {{ labels|safe }},
                 datasets: [
                     {
-                        label: "Gross amount ({{ currency|safe }})",
+                        label: "Gross income ({{ currency|safe }})",
                         backgroundColor: [
                             "#79AEC8",
                             "#3da9e1"
                         ],
                         borderColor: "#417690",
+                        borderRadius: 12,
                         data: {{ data|safe }},
+                        barThickness: 80,
+                    },
+                    {
+                        label: "Gross expense ({{ currency|safe }})",
+                        backgroundColor: [
+                            "#85ce5b",
+                            "#65e326"
+                        ],
+                        borderColor: "#417690",
+                        borderRadius: 12,
+                        data: {{ data2|safe }},
                         barThickness: 80,
                     }
                 ]
             },
             options: {
+                responsive: true,
                 plugins: {
+                    legend: {
+                        position: 'top'
+                    },
                     title: {
                         display: true,
-                        text: 'Income over time'
+                        text: 'Income and expenses over time'
                     }
                 }
             }

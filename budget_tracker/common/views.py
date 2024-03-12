@@ -12,13 +12,14 @@ class IndexView(views.TemplateView):
 
 def show_dashboard(request):
     profile = get_user_profile(request)
-    months, amounts = calculate_income_over_the_months(profile)
+    months, income_amounts, expense_amounts = calculate_income_over_the_months(profile)
 
     labels = months
-    data = [int(amount) for amount in amounts]
+    data = [int(amount) for amount in income_amounts]
+    data2 = [int(amount) for amount in expense_amounts]
     currency = get_current_currency(request)
 
-    context = {'labels': labels, 'data': data, 'currency': currency}
+    context = {'labels': labels, 'data': data, 'data2': data2, 'currency': currency}
 
     return render(request, 'common/dashboard.html', context)
 
