@@ -2,21 +2,18 @@
 
 {% block content %}
     <div id="chart-container">
-        <div class="doughnut-chart">
-            <canvas id="doughnut-chart-income"></canvas>
-        </div>
-        <div class="doughnut-chart">
-            <canvas id="doughnut-chart-expenses"></canvas>
+        <div>
+            <canvas id="bar-chart"></canvas>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
-        let ctx = document.getElementById("doughnut-chart-income").getContext("2d");
+        let ctx = document.getElementById("bar-chart").getContext("2d");
 
         let chart = new Chart(ctx, {
-            type: "doughnut",
+            type: "bar",
             data: {
                 labels: {{ labels|safe }},
                 datasets: [
@@ -24,10 +21,11 @@
                         label: "Gross amount ({{ currency|safe }})",
                         backgroundColor: [
                             "#79AEC8",
-                            {#"#14A44D",#}
+                            "#3da9e1"
                         ],
                         borderColor: "#417690",
-                        data: {{ data|safe }}
+                        data: {{ data|safe }},
+                        barThickness: 80,
                     }
                 ]
             },
@@ -36,33 +34,6 @@
                     title: {
                         display: true,
                         text: 'Income over time'
-                    }
-                }
-            }
-        });
-
-        let ctx_2 = document.getElementById("doughnut-chart-expenses").getContext("2d");
-
-        let chart_2 = new Chart(ctx_2, {
-            type: "doughnut",
-            data: {
-                labels: {{ labels|safe }},
-                datasets: [
-                    {
-                        label: "Gross amount ({{ currency|safe }})",
-                        backgroundColor: [
-                            "#c9cbcf",
-                        ],
-                        borderColor: "#b2b3b6",
-                        data: [20, 40]
-                    }
-                ]
-            },
-            options: {
-                plugins: {
-                    title: {
-                        display: true,
-                        text: 'Expenses over time'
                     }
                 }
             }

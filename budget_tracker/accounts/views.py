@@ -44,7 +44,7 @@ def login_user(request):
         user = authenticate(request, email=email, password=password)
         if user is not None:
             login(request, user)
-            return redirect('common:home')
+            return redirect('common:dashboard')
         else:
             messages.error(request, 'Invalid email or password. '
                                     'Please try again.')
