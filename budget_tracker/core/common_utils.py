@@ -36,7 +36,13 @@ def get_current_month():
     return current_month
 
 
-def calculate_income_over_the_months(profile):
+def get_total_amount_for_a_whole_month(current_month, queryset):
+    amount_per_month = sum([transaction.amount for transaction in queryset
+                            if transaction.date.month == current_month])
+    return amount_per_month
+
+
+def get_chart_data(profile):
     all_income = Income.objects.filter(profile=profile).order_by('date')
     all_expenses = Expense.objects.filter(profile=profile).order_by('date')
 
@@ -49,14 +55,10 @@ def calculate_income_over_the_months(profile):
         if current_month not in months:
             months.append(current_month)
 
-        amount_per_month = sum([income.amount for income in all_income if income.date.month == current_month])
-        if amount_per_month not in income_amounts:
-            income_amounts.append(amount_per_month)
-
-        amount_of_expense_per_month = sum([expense.amount for expense in all_expenses
-                                           if expense.date.month == current_month])
-        if amount_of_expense_per_month not in expense_amounts:
-            expense_amounts.append(amount_of_expense_per_month)
+    for month in months:
+        income_amounts.append(get_total_amount_for_a_whole_month(month, all_income))
+        expense_amounts.append(get_total_amount_for_a_whole_month(month, all_expenses))
 
     months = [month_name[month] for month in months]
+
     return months, income_amounts, expense_amounts

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views import generic as views
 
 from budget_tracker.core.accounts_utils import get_user_profile
-from budget_tracker.core.common_utils import get_recent_transactions, calculate_income_over_the_months
+from budget_tracker.core.common_utils import get_recent_transactions, get_chart_data
 from budget_tracker.core.currencies_utils import get_current_currency
 
 
@@ -12,7 +12,7 @@ class IndexView(views.TemplateView):
 
 def show_dashboard(request):
     profile = get_user_profile(request)
-    months, income_amounts, expense_amounts = calculate_income_over_the_months(profile)
+    months, income_amounts, expense_amounts = get_chart_data(profile)
 
     labels = months
     data = [int(amount) for amount in income_amounts]
