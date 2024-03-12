@@ -8,7 +8,7 @@ class Expense(models.Model):
 
     date = models.DateField(null=False, blank=False)
 
-    amount = models.DecimalField(max_digits=7, decimal_places=2, null=False, blank=False)
+    amount = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False)
 
     currency = models.CharField(max_length=30, null=False, blank=True)
 
