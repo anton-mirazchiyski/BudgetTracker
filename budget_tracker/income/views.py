@@ -23,7 +23,7 @@ class IncomeListView(views.ListView):
 
     def get_queryset(self):
         user_profile = get_user_profile(self.request)
-        self.queryset = user_profile.income_set.all()
+        self.queryset = user_profile.income_set.all().order_by('date')
         return super().get_queryset()
 
 
