@@ -36,28 +36,35 @@ def get_current_month():
     return current_month
 
 
-def get_total_amount_for_a_whole_month(current_month, queryset):
-    amount_per_month = sum([transaction.amount for transaction in queryset
+def get_total_amount_for_a_month(current_month, queryset):
+    amount_for_month = sum([transaction.amount for transaction in queryset
                             if transaction.date.month == current_month])
-    return amount_per_month
+    return amount_for_month
+
+
+def get_all_months_of_transactions(all_income, all_expenses):
+    months_of_income = [income.date.month for income in all_income]
+    months_of_expenses = [expense.date.month for expense in all_expenses]
+    all_months = set(months_of_income + months_of_expenses)
+
+    return all_months
 
 
 def get_chart_data(profile):
     all_income = Income.objects.filter(profile=profile).order_by('date')
     all_expenses = Expense.objects.filter(profile=profile).order_by('date')
 
+    all_months = get_all_months_of_transactions(all_income, all_expenses)
+
     months = []
     income_amounts = []
     expense_amounts = []
 
-    for income in all_income:
-        current_month = income.date.month
-        if current_month not in months:
-            months.append(current_month)
-
-    for month in months:
-        income_amounts.append(get_total_amount_for_a_whole_month(month, all_income))
-        expense_amounts.append(get_total_amount_for_a_whole_month(month, all_expenses))
+    for month in all_months:
+        if month not in months:
+            months.append(month)
+            income_amounts.append(get_total_amount_for_a_month(month, all_income))
+            expense_amounts.append(get_total_amount_for_a_month(month, all_expenses))
 
     months = [month_name[month] for month in months]
 
