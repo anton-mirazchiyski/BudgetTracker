@@ -14,9 +14,9 @@
             {% for transaction in transactions %}
                 <div class="recent-transaction">
                     {% if transaction.source %}
-                        <span>+</span>
+                        <span><i class="fa-solid fa-plus"></i></span>
                     {% else %}
-                        <span>-</span>
+                        <span><i class="fa-solid fa-minus"></i></span>
                     {% endif %}
                     <i class="fa-regular fa-credit-card"></i>
                     <div>

@@ -27,13 +27,12 @@
 
 .recent-transaction span {
     align-self: center;
-    font-size: 1.5em;
+    font-size: 1.2em;
 }
 
 .recent-transaction i {
     align-self: center;
     font-size: 1.2em;
-    color: #0a58ca;
 }
 
 .recent-transaction-date {
