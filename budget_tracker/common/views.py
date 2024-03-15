@@ -19,7 +19,12 @@ def show_dashboard(request):
     data2 = [int(amount) for amount in expense_amounts]
     currency = get_current_currency(request)
 
-    context = {'labels': labels, 'data': data, 'data2': data2, 'currency': currency}
+    context = {
+        'labels': labels,
+        'data': data,
+        'data2': data2,
+        'currency': currency
+    }
 
     return render(request, 'common/dashboard.html', context)
 

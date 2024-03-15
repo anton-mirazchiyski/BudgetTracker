@@ -3,3 +3,9 @@
     margin-top: 2em;
     margin-left: 2em;
 }
+
+.summary-container h2 {
+    text-align: center;
+    max-width: 45vw;
+    margin-top: 3em;
+}
