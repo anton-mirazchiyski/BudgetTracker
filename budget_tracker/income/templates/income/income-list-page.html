@@ -4,6 +4,13 @@
 
 {% block content %}
     <h2 class="heading income-list-heading">Your currently logged income</h2>
+    <div class="filters-container">
+        <h3 class="filters-heading">Show only:</h3>
+        <ul class="income-types-list">
+            <li><a href="{% url 'income:earned-income' 'Earned Income' %}">Earned Income</a></li>
+            <li><a href="{% url 'income:passive-income' 'Passive Income' %}">Passive Income</a></li>
+        </ul>
+    </div>
     <div class="income-container">
         <ul class="income-info-list">
             <li>
@@ -44,18 +51,18 @@
     </div>
     <a href="{% url 'income:add-income' %}" class="button add-income-button">Add more Income</a>
     <div class="income-calculations">
-    <div class="highest-monthly-income">
-        <h3>Highest income of the month is:</h3>
-        <p>
-            {{ highest_income.source|capfirst }} --- <strong>{{ highest_income.amount }}
-            {{ current_currency|make_list|first }}</strong>
-        </p>
-    </div>
-    <div class="total-monthly-income">
-        <h3>Total income for this month:</h3>
-        <p>
-            <strong>{{ total_income }} {{ current_currency|make_list|first}}</strong>
-        </p>
-    </div>
+        <div class="highest-monthly-income">
+            <h3>Highest income of the month is:</h3>
+            <p>
+                {{ highest_income.source|capfirst }} --- <strong>{{ highest_income.amount }}
+                {{ current_currency|make_list|first }}</strong>
+            </p>
+        </div>
+        <div class="total-monthly-income">
+            <h3>Total income for this month:</h3>
+            <p>
+                <strong>{{ total_income }} {{ current_currency|make_list|first }}</strong>
+            </p>
+        </div>
     </div>
 {% endblock %}

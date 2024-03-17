@@ -1,7 +1,7 @@
 .income-list-heading {
     text-align: center;
     padding: 0.5em;
-    margin-bottom: 1.5em;
+    margin-bottom: 0.5em;
 }
 
 .income-container {
@@ -63,4 +63,23 @@
 .total-monthly-income {
     max-width: 30vw;
     text-align: center;
+}
+
+.filters-container {
+    margin-left: 2em;
+    margin-bottom: 2em;
+}
+
+.filters-heading {
+    margin-bottom: 0.5em;
+}
+
+.income-types-list {
+    list-style-type: none;
+    display: flex;
+    gap: 1.3em;
+}
+
+.income-types-list a{
+    color: #000;
 }

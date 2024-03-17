@@ -27,6 +27,22 @@ class IncomeListView(views.ListView):
         return super().get_queryset()
 
 
+class IncomeByTypeListView(views.ListView):
+    model = Income
+    template_name = 'income/income-list-page.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['current_currency'] = get_current_currency(self.request)
+        return context
+
+    def get_queryset(self):
+        user_profile = get_user_profile(self.request)
+        income_type = self.kwargs['type']
+        self.queryset = user_profile.income_set.filter(type=income_type)
+        return self.queryset
+
+
 def add_income(request):
     current_currency = get_current_currency(request)
     user_profile = get_user_profile(request)
