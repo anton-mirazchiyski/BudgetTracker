@@ -7,9 +7,22 @@
     <div class="filters-container">
         <h3 class="filters-heading">Show only:</h3>
         <ul class="income-types-list">
-            <li><a href="{% url 'income:earned-income' 'Earned Income' %}">Earned Income</a></li>
-            <li><a href="{% url 'income:passive-income' 'Passive Income' %}">Passive Income</a></li>
+            <li>
+                <a href="{% url 'income:earned-income' 'Earned Income' %}">Earned Income</a>
+            </li>
+            <li>
+                <a href="{% url 'income:passive-income' 'Passive Income' %}">Passive Income</a>
+            </li>
+            <li>
+                <a href="{% url 'income:passive-income' 'Portfolio Income' %}">Portfolio Income</a>
+            </li>
+            <li>
+                <a href="{% url 'income:current-month-income' %}">Current Month</a>
+            </li>
         </ul>
+        <p>
+            <a href="{% url 'income:all-income' %}">Show all</a>
+        </p>
     </div>
     <div class="income-container">
         <ul class="income-info-list">

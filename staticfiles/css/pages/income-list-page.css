@@ -80,6 +80,10 @@
     gap: 1.3em;
 }
 
-.income-types-list a{
+.filters-container > p {
+    margin-top: 0.8em;
+}
+
+.filters-container a{
     color: #000;
 }
