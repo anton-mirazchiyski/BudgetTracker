@@ -4,7 +4,7 @@
 
 {% block content %}
     <h2 class="heading login-heading">Login</h2>
-    
+
     <div class="centered-container login-container">
         <form action="{% url 'accounts:login-account' %}" method="post">
             {% for field in form %}
@@ -23,9 +23,9 @@
                         {{ message }}
                     </div>
                 {% else %}
-                <div class="login-errors form-errors">
-                    {{ message }}
-                </div>
+                    <div class="login-errors form-errors">
+                        {{ message }}
+                    </div>
                 {% endif %}
             {% endfor %}
         </form>

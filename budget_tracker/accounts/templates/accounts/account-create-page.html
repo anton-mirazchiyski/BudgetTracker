@@ -18,7 +18,9 @@
             <button type="submit">Continue</button>
             {% csrf_token %}
             <div class="login-info-div">
-                <p>Have an account? <a href="#" class="login-extra-link">Sign in</a></p>
+                <p>Have an account? 
+                    <a href="{% url 'accounts:login-account' %}" class="login-extra-link">Sign in</a>
+                </p>
             </div>
             {% if form.errors %}
                 <div class="registration-errors form-errors">

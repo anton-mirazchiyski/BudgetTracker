@@ -30,22 +30,3 @@ table, input {
     justify-content: center;
     align-items: center;
 }
-
-.form-errors {
-    border: 1px solid red;
-    border-radius: 0.4em;
-    background-color: lightcoral;
-    max-width: 10vw;
-    padding: 1.5em;
-    margin-top: 2em;;
-}
-
-.registration-success-message {
-    border: 1px solid green;
-    border-radius: 0.4em;
-    background-color: green;
-    color: #fff;
-    max-width: 10vw;
-    padding: 1.5em;
-    margin-top: 2em;;
-}
