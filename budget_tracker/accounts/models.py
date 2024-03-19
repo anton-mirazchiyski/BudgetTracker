@@ -112,7 +112,7 @@ class Balance(models.Model):
         null=False, blank=False
     )
 
-    currency = models.OneToOneField(Currency, on_delete=models.PROTECT)
+    currency = models.CharField(max_length=10, null=False, blank=False)
 
     class Meta:
         verbose_name_plural = 'Balance'
