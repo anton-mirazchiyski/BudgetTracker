@@ -1,13 +1,12 @@
 from django.contrib import messages
 from django.contrib.auth import get_user_model, authenticate, login, logout
 from django.contrib.messages.views import SuccessMessageMixin
-from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic as views
 
 from budget_tracker.accounts.forms import RegistrationForm, LoginForm, DetailsForm, CurrencyForm
-from budget_tracker.accounts.models import UserProfile, Currency, Balance
+from budget_tracker.accounts.models import UserProfile, Currency
 from budget_tracker.core.currencies_utils import change_existing_currency, create_new_currency
 
 UserModel = get_user_model()
@@ -20,18 +19,6 @@ class AccountCreateView(SuccessMessageMixin, views.CreateView):
     success_url = reverse_lazy('accounts:login-account')
 
     success_message = 'Your account was created. You can log in.'
-
-    def post(self, request, *args, **kwargs):
-        super().post(request, *args, **kwargs)
-        self.create_profile_and_currency()
-        return HttpResponseRedirect(super().get_success_url())
-
-    def create_profile_and_currency(self):
-        new_user_profile = UserProfile.objects.create(user=self.object, user_id=self.object.pk)
-        new_user_profile.save()
-        user_currency = Currency.objects.create(user_profile=new_user_profile)
-        user_currency.save()
-        user_balance = Balance.objects.create(user_profile=new_user_profile, amount=0)
 
 
 def login_user(request):
