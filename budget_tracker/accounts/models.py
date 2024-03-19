@@ -1,7 +1,8 @@
 from django.contrib.auth import get_user_model
-from django.core.validators import DecimalValidator
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
+
+from budget_tracker.accounts.validators import validate_name_contains_only_letters, validate_name_has_enough_length
 
 
 class MyCustomUserManager(BaseUserManager):
@@ -34,9 +35,19 @@ class MyCustomUserManager(BaseUserManager):
 class BudgetTrackerUser(AbstractBaseUser):
     email = models.EmailField(max_length=255, unique=True, blank=False, null=False)
 
-    first_name = models.CharField(max_length=150, blank=False, null=False)
+    first_name = models.CharField(max_length=150,
+                                  validators=[
+                                        validate_name_contains_only_letters,
+                                        validate_name_has_enough_length
+                                  ],
+                                  blank=False, null=False)
 
-    last_name = models.CharField(max_length=150, blank=False, null=False)
+    last_name = models.CharField(max_length=150,
+                                 validators=[
+                                     validate_name_contains_only_letters,
+                                     validate_name_has_enough_length
+                                 ],
+                                 blank=False, null=False)
 
     is_active = models.BooleanField(default=True)
 
