@@ -1,0 +1,33 @@
+.currency-change-container {
+    flex-direction: column;
+    gap: 1.6em;
+    font-size: 1.2em;
+}
+
+.currency-change-container > h3 {
+    font-weight: 600;
+    margin-bottom: 0.6em;
+}
+
+.currency-form-input {
+    min-width: 12vw;
+    text-indent: 5px;
+    text-align: center;
+}
+
+.currency-change-form-and-button {
+    display: flex;
+    flex-direction: column;
+    gap: 1.3em;
+}
+
+.currency-change-button {
+    font-size: 0.9em;
+    min-width: 40%;
+    background-color: #14A44D;
+    color: #fff;
+}
+
+.currency-change-container span {
+    /*color: #218678;*/
+}

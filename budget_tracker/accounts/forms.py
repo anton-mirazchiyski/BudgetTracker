@@ -93,7 +93,7 @@ class CurrencyForm(forms.ModelForm):
         widgets = {
             'currency': forms.Select(
                 attrs={
-                    'class': 'form-select form-control'
+                    'class': 'currency-form-input form-input'
                 }
             )
         }
