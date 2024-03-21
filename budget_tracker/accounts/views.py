@@ -6,8 +6,9 @@ from django.urls import reverse_lazy
 from django.views import generic as views
 
 from budget_tracker.accounts.forms import RegistrationForm, LoginForm, DetailsForm, CurrencyForm
-from budget_tracker.accounts.models import UserProfile, Currency
-from budget_tracker.core.currencies_utils import change_existing_currency, create_new_currency
+from budget_tracker.accounts.models import Currency
+from budget_tracker.core.accounts_utils import get_user_profile
+from budget_tracker.core.currencies_utils import change_existing_currency, get_current_currency
 
 UserModel = get_user_model()
 
@@ -64,29 +65,28 @@ def details_profile(request, pk):
 
 
 def change_currency(request, pk):
-    user = request.user
+    user_profile = get_user_profile(request)
 
-    if request.method == 'GET':
-        currency_form = CurrencyForm(request)
-    else:
+    if request.method == 'POST':
         currency_form = CurrencyForm(request, request.POST)
         if currency_form.is_valid():
             new_currency = currency_form.save(commit=False)
-            user_profile = UserProfile.objects.filter(user=user).get()
             has_old_currency = Currency.objects.filter(user_profile=user_profile).exists()
 
             if has_old_currency:
                 change_existing_currency(user_profile, new_currency)
-
-            if not has_old_currency:
-                create_new_currency(request, user_profile)
-
+            new_currency.save()
             return redirect(request.META['HTTP_REFERER'])
-    try:
-        user_profile = UserProfile.objects.select_related('currency').filter(user_id=pk).get()
-        current_currency = user_profile.currency
-    except Currency.DoesNotExist:
-        current_currency = Currency.EURO
-    return render(request,
-                  'currencies/currency-change-page.html',
-                  {'form': currency_form, 'profile_pk': pk, 'currency': current_currency})
+
+    currency_form = CurrencyForm(request)
+    current_currency = get_current_currency(request)
+    context = {
+        'form': currency_form,
+        'currency': current_currency
+    }
+
+    return render(
+        request,
+        'currencies/currency-change-page.html',
+        context
+    )

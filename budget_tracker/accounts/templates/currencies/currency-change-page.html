@@ -9,7 +9,7 @@
             Choose between several available currencies:
         </h3>
         <div>
-            <form action="{% url 'accounts:change-currency' profile_pk %}" method="post">
+            <form action="{% url 'accounts:change-currency' user.pk %}" method="post">
                 <div class="currency-change-form-and-button">
                     <div>
                         {{ form.currency }}

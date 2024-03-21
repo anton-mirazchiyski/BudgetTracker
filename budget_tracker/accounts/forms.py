@@ -2,7 +2,8 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 
-from budget_tracker.accounts.models import Currency, UserProfile
+from budget_tracker.accounts.models import Currency
+from budget_tracker.core.currencies_utils import get_current_currency
 
 UserModel = get_user_model()
 
@@ -78,12 +79,7 @@ class CurrencyForm(forms.ModelForm):
     def __init__(self, request, *args, **kwargs):
         self.request = request
         super().__init__(*args, **kwargs)
-        user_profile = (UserProfile.objects.select_related('currency').
-                        filter(user=self.request.user).get())
-        try:
-            user_currency = user_profile.currency
-        except Currency.DoesNotExist:
-            user_currency = Currency.EURO
+        user_currency = get_current_currency(self.request)
         self.fields['currency'].initial = user_currency
 
     class Meta:
