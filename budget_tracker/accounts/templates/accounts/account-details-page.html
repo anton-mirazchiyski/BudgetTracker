@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
-{% block title %} BudgetTracker - Edit profile {% endblock %}
+{% block title %} BudgetTracker - Profile {% endblock %}
 
 {% block content %}
-    <h2 class="heading profile-heading">Edit profile</h2>
+    <h2 class="heading profile-heading">Your Profile</h2>
     
     <div class="centered-container profile-container">
-        <form action="{% url 'accounts:details-profile' profile_pk %}" method="post">
+        <form action="{% url 'accounts:details-profile' user.pk %}" method="post">
             {% for field in form %}
                 <div class="form-label profile-form-label">
                     {{ field.label_tag }}
@@ -17,13 +17,13 @@
             {% endfor %}
             <div class="profile-buttons">
                 <button type="submit" class="profile-save-button">Save</button>
-                <a href="#" class="account-delete-button">Delete Account</a>
             </div>
             {% csrf_token %}
         </form>
         <div class="profile-links">
             <a href="#">Change password</a>
-            <a href="{% url 'accounts:change-currency' profile_pk %}">Change currency</a>
+            <a href="{% url 'accounts:change-currency' user.pk %}">Change currency</a>
         </div>
+        <a href="#" class="account-delete-button">Delete Account</a>
     </div>
 {% endblock %}

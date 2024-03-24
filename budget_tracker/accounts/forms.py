@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 
-from budget_tracker.accounts.models import Currency
+from budget_tracker.accounts.models import Currency, UserProfile
 from budget_tracker.core.currencies_utils import get_current_currency
 
 UserModel = get_user_model()
@@ -70,9 +70,15 @@ class LoginForm(AccountsBaseForm):
         fields = ('email', 'password')
 
 
-class DetailsForm(AccountsBaseForm):
-    class Meta(AccountsBaseForm.Meta):
-        fields = ('first_name', 'last_name', 'email')
+class ProfileDetailsForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs['class'] = 'photo-input'
+
+    class Meta:
+        model = UserProfile
+        fields = ('photo',)
 
 
 class CurrencyForm(forms.ModelForm):

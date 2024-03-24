@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic as views
 
-from budget_tracker.accounts.forms import RegistrationForm, LoginForm, DetailsForm, CurrencyForm
+from budget_tracker.accounts.forms import RegistrationForm, LoginForm, ProfileDetailsForm, CurrencyForm
 from budget_tracker.accounts.models import Currency
 from budget_tracker.core.accounts_utils import get_user_profile
 from budget_tracker.core.currencies_utils import change_existing_currency, get_current_currency
@@ -49,18 +49,15 @@ def logout_user(request):
 
 
 def details_profile(request, pk):
-    profile = UserModel.objects.get(pk=pk)
-    if request.method == 'GET':
-        form = DetailsForm(instance=profile)
-    else:
-        form = DetailsForm(request.POST, instance=profile)
+    if request.method == 'POST':
+        form = ProfileDetailsForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-            return redirect(request.META['HTTP_REFERER'])
+            return redirect('accounts:details-profile', pk)
+    form = ProfileDetailsForm(request.FILES)
     return render(
         request,
         'accounts/account-details-page.html',
-        {'form': form, 'profile_pk': pk}
+        {'form': form}
     )
 
 
