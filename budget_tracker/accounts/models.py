@@ -83,13 +83,11 @@ UserModel = get_user_model()
 
 def user_directory_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
-    return "user_{0}/{1}".format(instance.user.id, filename)
+    return f'user_{instance.user_profile.user.pk}/{filename}'
 
 
 class UserProfile(models.Model):
     user = models.OneToOneField(UserModel, on_delete=models.CASCADE)
-
-    photo = models.ImageField(upload_to=user_directory_path, null=True, blank=True)
 
     def __str__(self):
         return str(self.user)
@@ -142,3 +140,9 @@ class Balance(models.Model):
         if self.amount < 0:
             self.amount = 0
         super(Balance, self).save(*args, **kwargs)
+
+
+class ProfilePhoto(models.Model):
+    user_profile = models.OneToOneField(UserProfile, on_delete=models.CASCADE)
+
+    photo = models.ImageField(upload_to=user_directory_path, null=True, blank=True)
