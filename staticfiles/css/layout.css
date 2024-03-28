@@ -7,8 +7,14 @@ body {
     font-weight: normal;
 }
 
-table, input {
+table, input, button {
     font: inherit;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
 }
 
 .primary-container {

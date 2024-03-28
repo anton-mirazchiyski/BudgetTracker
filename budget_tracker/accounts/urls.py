@@ -1,6 +1,6 @@
 from django.urls import path, include
 
-from budget_tracker.accounts.views import AccountCreateView, login_user, logout_user, details_profile, change_currency
+from budget_tracker.accounts.views import AccountCreateView, login_user, logout_user, change_currency, details_profile
 
 app_name = 'accounts'
 

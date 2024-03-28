@@ -6,7 +6,12 @@
     <h2 class="heading profile-heading">Your Profile</h2>
     
     <div class="centered-container profile-container">
-        <form action="{% url 'accounts:details-profile' user.pk %}" method="post">
+        <div class="profile-photo">
+            {% if photo %}
+                 <img src="{{ photo.photo.url }}" alt="profile-photo">
+            {% endif %}
+        </div>
+        <form method="post" enctype="multipart/form-data">
             {% for field in form %}
                 <div class="form-label profile-form-label">
                     {{ field.label_tag }}
