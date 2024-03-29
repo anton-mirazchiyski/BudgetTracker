@@ -10,6 +10,10 @@
         <div class="profile-info-container">
             <div class="profile-names">
                 <h3>{{ user.first_name }} <br> {{ user.last_name }}</h3>
+                <br>
+                <h3>{{ user.email }}</h3>
+                <br>
+                <h3>Balance: {{ balance }}</h3>
             </div>
             <div class="profile-photo">
                 {% if photo %}
@@ -18,9 +22,11 @@
                     <p><a href="{% url 'accounts:add-profile-photo' user.pk %}">Upload photo</a></p>
                 {% endif %}
             </div>
-            <div class="profile-email">
-                <h3>{{ user.email }}</h3>
-            </div>
+        </div>
+        <div class="remove-photo">
+            {% if photo %}
+            <i class="fa-solid fa-xmark"></i><a href="#">Remove Photo</a>
+            {% endif %}
         </div>
         <div class="profile-photo-form">
             <form method="post" enctype="multipart/form-data">

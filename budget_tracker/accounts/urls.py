@@ -11,7 +11,7 @@ urlpatterns = [
         path('login/', login_user, name='login-account')
     ])),
     path('logout/', logout_user, name='logout-account'),
-    path('<int:pk>/profile/details/', add_profile_photo, name='add-profile-photo'),
-    path('<int:pk>/profile/details/', ProfileDetailsView.as_view(), name='details-profile'),
+    path('<int:pk>/profile/', add_profile_photo, name='add-profile-photo'),
+    path('<int:pk>/profile/', ProfileDetailsView.as_view(), name='details-profile'),
     path('<int:pk>/profile/currency', change_currency, name='change-currency')
 ]

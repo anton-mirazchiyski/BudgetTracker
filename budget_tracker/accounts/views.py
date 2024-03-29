@@ -8,6 +8,7 @@ from django.views import generic as views
 from budget_tracker.accounts.forms import RegistrationForm, LoginForm, CurrencyForm, ProfilePhotoForm
 from budget_tracker.accounts.models import Currency
 from budget_tracker.core.accounts_utils import get_user_profile, get_profile_photo
+from budget_tracker.core.common_utils import get_current_balance
 from budget_tracker.core.currencies_utils import change_existing_currency, get_current_currency
 
 UserModel = get_user_model()
@@ -67,10 +68,12 @@ def add_profile_photo(request, pk):
     form = ProfilePhotoForm()
 
     photo = get_profile_photo(profile)
+    balance = get_current_balance(profile)
     context = {
         'form': form,
         'profile': profile,
-        'photo': photo
+        'photo': photo,
+        'balance': balance,
     }
     return render(
         request,
