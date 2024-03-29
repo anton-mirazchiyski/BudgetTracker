@@ -1,14 +1,13 @@
 from django.contrib import messages
 from django.contrib.auth import get_user_model, authenticate, login, logout
 from django.contrib.messages.views import SuccessMessageMixin
-from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic as views
 
 from budget_tracker.accounts.forms import RegistrationForm, LoginForm, CurrencyForm, ProfilePhotoForm
-from budget_tracker.accounts.models import Currency, ProfilePhoto
-from budget_tracker.core.accounts_utils import get_user_profile
+from budget_tracker.accounts.models import Currency
+from budget_tracker.core.accounts_utils import get_user_profile, get_profile_photo
 from budget_tracker.core.currencies_utils import change_existing_currency, get_current_currency
 
 UserModel = get_user_model()
@@ -59,15 +58,15 @@ def add_profile_photo(request, pk):
         form = ProfilePhotoForm(request.POST, request.FILES)
         if form.is_valid():
             form = form.save(commit=False)
+            previous_photo = get_profile_photo(profile)
+            if previous_photo is not None:
+                previous_photo.delete()
             form.user_profile = profile
             form.save()
             return redirect('accounts:details-profile', pk)
     form = ProfilePhotoForm()
 
-    try:
-        photo = ProfilePhoto.objects.filter(user_profile=profile).get()
-    except ObjectDoesNotExist:
-        photo = None
+    photo = get_profile_photo(profile)
     context = {
         'form': form,
         'profile': profile,

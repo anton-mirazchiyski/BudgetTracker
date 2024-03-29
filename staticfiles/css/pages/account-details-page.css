@@ -4,6 +4,7 @@
 
 .profile-container {
     flex-direction: column;
+    gap: 1.5em;
 }
 
 .profile-form-div {
