@@ -8,9 +8,12 @@
     <div class="centered-container profile-container">
         <div class="profile-photo">
             {% if photo %}
-                 <img src="{{ photo.photo.url }}" alt="profile-photo">
+                 <img src="{{ photo.photo.url }}" alt="profile-pic">
+            {% else %}
+                <p><a href="{% url 'accounts:add-profile-photo' user.pk %}">Upload photo</a></p>
             {% endif %}
         </div>
+        <div class="profile-photo-form">
         <form method="post" enctype="multipart/form-data">
             {% for field in form %}
                 <div class="form-label profile-form-label">
@@ -25,10 +28,23 @@
             </div>
             {% csrf_token %}
         </form>
+        </div>
         <div class="profile-links">
             <a href="#">Change password</a>
             <a href="{% url 'accounts:change-currency' user.pk %}">Change currency</a>
+            {% if photo %}
+                <a href="#">Change photo</a>
+            {% endif %}
         </div>
         <a href="#" class="account-delete-button">Delete Account</a>
     </div>
+    <script>
+        const imageElement = document.querySelector('div.profile-photo > img');
+        const formElement = document.querySelector('div.profile-photo-form');
+        if (imageElement.src === '') {
+            formElement.style.display = 'block';
+        } else {
+           formElement.style.display = 'none';
+        }
+    </script>
 {% endblock %}

@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth import get_user_model, authenticate, login, logout
 from django.contrib.messages.views import SuccessMessageMixin
+from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic as views
@@ -48,7 +49,11 @@ def logout_user(request):
     return redirect('common:home')
 
 
-def details_profile(request, pk):
+class ProfileDetailsView(views.TemplateView):
+    template_name = 'accounts/account-details-page.html'
+
+
+def add_profile_photo(request, pk):
     profile = get_user_profile(request)
     if request.method == 'POST':
         form = ProfilePhotoForm(request.POST, request.FILES)
@@ -58,8 +63,12 @@ def details_profile(request, pk):
             form.save()
             return redirect('accounts:details-profile', pk)
     form = ProfilePhotoForm()
-    photo = ProfilePhoto.objects.filter(user_profile=profile).get()
-    context ={
+
+    try:
+        photo = ProfilePhoto.objects.filter(user_profile=profile).get()
+    except ObjectDoesNotExist:
+        photo = None
+    context = {
         'form': form,
         'profile': profile,
         'photo': photo

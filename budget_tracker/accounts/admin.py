@@ -1,5 +1,5 @@
 from django.contrib import admin
-from budget_tracker.accounts.models import BudgetTrackerUser, UserProfile, Currency, Balance
+from budget_tracker.accounts.models import BudgetTrackerUser, UserProfile, Currency, Balance, ProfilePhoto
 
 
 class CustomUserAdmin(admin.ModelAdmin):
@@ -43,3 +43,6 @@ class BalanceAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Balance, BalanceAdmin)
+
+
+admin.site.register(ProfilePhoto)
