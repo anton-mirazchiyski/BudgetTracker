@@ -67,3 +67,14 @@
 .profile-photo > img {
     border-radius: 3em;
 }
+
+.profile-info-container {
+    display: flex;
+    gap: 3em
+}
+
+.profile-names,
+.profile-email {
+    align-self: center;
+    text-align: center;
+}
