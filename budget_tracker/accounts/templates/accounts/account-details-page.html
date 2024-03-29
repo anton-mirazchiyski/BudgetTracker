@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %} BudgetTracker - Profile {% endblock %}
 
@@ -41,18 +42,10 @@
             <a href="#">Change password</a>
             <a href="{% url 'accounts:change-currency' user.pk %}">Change currency</a>
             {% if photo %}
-                <a href="#">Change photo</a>
+                <a href="#" class="change-photo-link">Change photo</a>
             {% endif %}
         </div>
         <a href="#" class="account-delete-button">Delete Account</a>
     </div>
-    <script>
-        const imageElement = document.querySelector('div.profile-photo > img');
-        const formElement = document.querySelector('div.profile-photo-form');
-        if (imageElement.src === '') {
-            formElement.style.display = 'block';
-        } else {
-            formElement.style.display = 'none';
-        }
-    </script>
+    <script src="{% static 'js/profile-photo-script.js' %}"> </script>
 {% endblock %}
