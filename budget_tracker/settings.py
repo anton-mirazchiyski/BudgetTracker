@@ -1,7 +1,6 @@
 """
 Django settings for budget_tracker project.
 """
-
 from pathlib import Path
 from decouple import config
 
@@ -44,6 +43,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'budget_tracker.core.middlewares.ProfilePhotoMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
