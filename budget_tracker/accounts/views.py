@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.views import generic as views
 
 from budget_tracker.accounts.forms import RegistrationForm, LoginForm, CurrencyForm, ProfilePhotoForm
-from budget_tracker.accounts.models import Currency
+from budget_tracker.accounts.models import Currency, ProfilePhoto
 from budget_tracker.core.accounts_utils import get_user_profile, get_profile_photo
 from budget_tracker.core.common_utils import get_current_balance
 from budget_tracker.core.currencies_utils import change_existing_currency, get_current_currency
@@ -80,6 +80,13 @@ def add_profile_photo(request, pk):
         'accounts/account-details-page.html',
         context
     )
+
+
+def delete_profile_photo(request, pk):
+    profile = get_user_profile(request)
+    photo = ProfilePhoto.objects.filter(user_profile=profile).get()
+    photo.delete()
+    return redirect('accounts:details-profile', pk)
 
 
 def change_currency(request, pk):

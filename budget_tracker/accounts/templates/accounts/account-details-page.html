@@ -25,7 +25,8 @@
         </div>
         <div class="remove-photo">
             {% if photo %}
-            <i class="fa-solid fa-xmark"></i><a href="#">Remove Photo</a>
+            <i class="fa-solid fa-xmark"></i>
+                <a href="{% url 'accounts:delete-profile-photo' user.pk %}">Remove Photo</a>
             {% endif %}
         </div>
         <div class="profile-photo-form">
