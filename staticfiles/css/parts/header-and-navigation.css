@@ -4,6 +4,7 @@ header {
     justify-content: center;
     padding: 2.1em 0;
     border-bottom: 2px solid black;
+    max-height: 10.5vh;
 }
 
 header > p {
@@ -45,4 +46,16 @@ nav a {
 nav span {
     font-weight: bold;
     color: #ffe5B4;
+}
+
+li.nav-profile-photo {
+    max-width: 2vw;
+    border: 1px solid #000;
+    border-radius: 0.3em;
+    position: relative;
+    bottom: 0.4em;
+}
+
+.nav-profile-photo img {
+    border-radius: 0.3em;
 }
