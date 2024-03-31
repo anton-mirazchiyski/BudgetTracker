@@ -80,6 +80,8 @@ class ProfilePhotoForm(forms.ModelForm):
         model = ProfilePhoto
         fields = ('photo',)
 
+        labels = {'photo': 'Upload Photo'}
+
 
 class CurrencyForm(forms.ModelForm):
     def __init__(self, request, *args, **kwargs):

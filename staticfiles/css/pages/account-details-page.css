@@ -1,5 +1,5 @@
 .profile-heading {
-    margin-top: 1.2em;
+    margin-bottom: 2em;
 }
 
 .profile-container {
@@ -68,6 +68,10 @@
 
 .profile-photo > img {
     border-radius: 3em;
+}
+
+.profile-photo > p {
+    padding: 0.5em;
 }
 
 .profile-info-container {
