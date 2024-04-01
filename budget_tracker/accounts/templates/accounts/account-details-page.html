@@ -52,7 +52,7 @@
                 <a href="#" class="change-photo-link">Change photo</a>
             {% endif %}
         </div>
-        <a href="#" class="account-delete-button">Delete Account</a>
+        <a href="{% url 'accounts:delete-account' user.pk %}" class="account-delete-button">Delete Account</a>
     </div>
     <script src="{% static 'js/profile-photo-script.js' %}"> </script>
 {% endblock %}

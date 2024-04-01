@@ -111,3 +111,8 @@ def change_currency(request, pk):
         'currencies/currency-change-page.html',
         context
     )
+
+
+class AccountDeleteView(views.DeleteView):
+    model = UserModel
+    template_name = 'accounts/account-delete-page.html'
