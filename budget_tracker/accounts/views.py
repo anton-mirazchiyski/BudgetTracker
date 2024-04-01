@@ -49,11 +49,7 @@ def logout_user(request):
     return redirect('common:home')
 
 
-class ProfileDetailsView(views.TemplateView):
-    template_name = 'accounts/account-details-page.html'
-
-
-def add_profile_photo(request, pk):
+def show_profile_details(request, pk):
     profile = get_user_profile(request)
     if request.method == 'POST':
         form = ProfilePhotoForm(request.POST, request.FILES)

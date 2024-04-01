@@ -53,9 +53,11 @@
                     Balance
                 </a>
             </li>
-            <li class="nav-profile-photo">
-                <img src="{{ request.context_variable.photo.url }}" alt="photo">
-            </li>
+            {% if request.context_variable %}
+                <li class="nav-profile-photo">
+                    <img src="{{ request.context_variable.photo.url }}" alt="photo">
+                </li>
+            {% endif %}
             <li class="sign-out">
                 <a href="{% url 'accounts:logout-account' %}">
                     Sign Out
