@@ -1,12 +1,16 @@
 @import "reset.css";
 @import "layout.css";
+
 @import "parts/header-and-navigation.css";
 @import "parts/footer.css";
+
 @import "elements/forms.css";
 @import "elements/buttons.css";
+
 @import "pages/account-create-page.css";
 @import "pages/account-login-page.css";
 @import "pages/account-details-page.css";
+@import "pages/account-delete-page.css";
 @import "pages/currency-change-page.css";
 @import "pages/dashboard-page.css";
 @import "pages/balance-page.css";
@@ -14,4 +18,5 @@
 @import "pages/income-add-page.css";
 @import "pages/expenses-list-page.css";
 @import "pages/expense-add-page.css";
+
 @import "errors-and-messages.css";

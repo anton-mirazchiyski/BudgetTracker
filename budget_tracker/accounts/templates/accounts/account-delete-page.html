@@ -1,10 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html'%}
 
-</body>
-</html>
+{% block title %} Account Delete Confirmation {% endblock %}
+
+{% block content %}
+    <h2 class="heading account-delete-heading">
+        Are you sure you want to delete your account?
+    </h2>
+    <p class="account-termination">
+        Account termination is irreversible and all data will be lost
+    </p>
+    <div class="account-delete-buttons">
+        <a href="{% url 'common:dashboard' %}" class="button get-back-btn">
+            No, get me back
+        </a>
+        <a href="{% url 'accounts:delete-user-data' request.user.pk %}" class="button delete-all-data-btn">
+            Delete everything
+        </a>
+    </div>
+{% endblock %}

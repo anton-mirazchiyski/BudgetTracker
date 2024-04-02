@@ -1,0 +1,33 @@
+h2.account-delete-heading {
+    margin-top: 3em;
+}
+
+p.account-termination {
+    text-align: center;
+    font-size: 1.05em;
+    color: red;
+}
+
+div.account-delete-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 5em;
+}
+
+a.delete-all-data-btn {
+    background-color: indianred;
+    color: #fff;
+}
+
+a.get-back-btn {
+    background-color: #14A44D;
+    color: #fff;
+}
+
+a.delete-all-data-btn:hover {
+    background-color: red;
+}
+
+a.get-back-btn:hover {
+    background-color: #14A44D;
+}

@@ -113,6 +113,11 @@ def change_currency(request, pk):
     )
 
 
-class AccountDeleteView(views.DeleteView):
-    model = UserModel
+class AccountDeleteView(views.TemplateView):
     template_name = 'accounts/account-delete-page.html'
+
+
+def delete_user_data(request, pk):
+    current_user = UserModel.objects.filter(pk=pk).get()
+    current_user.delete()
+    return redirect('common:home')
