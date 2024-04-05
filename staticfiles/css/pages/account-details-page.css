@@ -92,4 +92,5 @@
 .remove-photo > a {
     padding: 0.5em;
     text-decoration: none;
+    color: indianred;
 }

@@ -42,3 +42,9 @@
 div.registration-errors {
     border: 2px solid black;
 }
+
+.register-continue-btn {
+    background-color: rgb(255, 229, 165);
+    color: #000;
+    font-size: 0.95em;
+}

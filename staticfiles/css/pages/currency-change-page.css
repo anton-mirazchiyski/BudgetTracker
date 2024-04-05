@@ -22,12 +22,7 @@
 }
 
 .currency-change-button {
-    font-size: 0.9em;
+    font-size: 0.8em;
     min-width: 40%;
-    background-color: #14A44D;
-    color: #fff;
-}
-
-.currency-change-container span {
-    /*color: #218678;*/
+    margin-top: 0.5em;
 }
