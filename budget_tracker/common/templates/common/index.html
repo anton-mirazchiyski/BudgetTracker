@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Budget Tracker - A finance tracking helper {% endblock %}
+
+{% block content %}
+    <div class="landing-page-container">
+        <h1 class="landing-heading">
+            Welcome to BudgetTracker - Your Personal Finance Companion
+        </h1>
+        <section>
+            <p>Manage your finances with the ultimate budget tracking app designed for simplicity and power.</p>
+            <p>Take control of your money, track your income and expenses, and achieve financial freedom.</p>
+        </section>
+
+        <h2 class="features-heading">Some of our key features are:</h2>
+        <section class="features-section">
+            <ul class="key-features-list">
+                <li>
+                    <h3>Real-Time Overview</h3>
+                    <p>Instantly see your financial health with a glance. Our intuitive dashboard displays your current
+                        balance, income, and expenses in real-time.</p>
+                    <img src="{% static 'images/admin-dashboard-chart-example.PNG' %}" alt="dashboard-image">
+                </li>
+                <li>
+                    <h3>Easy Expense Tracking</h3>
+                    <p>Effortlessly log your daily expenses with a few clicks.
+                        Stay organized and gain insights into your spending patterns.</p>
+                </li>
+                <li>
+                    <h3>Income Tracking</h3>
+                    <p> Never miss a payday! Keep tabs on your income sources and monitor your overall cash flow.</p>
+                </li>
+            </ul>
+        </section>
+
+        <h2>Why Choose BudgetTracker?</h2>
+        <section class="choose-section">
+            <ul class="choose-list">
+                <li>
+                    <h3>User-Friendly Interface</h3>
+                    <p>Navigate with ease and enjoy a seamless user experience,
+                        whether you're a financial pro or just starting your budgeting journey.</p>
+                    <p class="income-example-img">
+                        <img src="{% static 'images/admin-income-example.PNG' %}" alt="income-page-example-pic">
+                    </p>
+                </li>
+                <li>
+                    <h3>Save Time, Save Money</h3>
+                    <p> BudgetTracker simplifies money management, saving you time and helping you make informed decisions
+                        that lead to financial savings.</p>
+                </li>
+            </ul>
+        </section>
+    </div>
+{% endblock %}

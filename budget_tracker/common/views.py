@@ -7,7 +7,7 @@ from budget_tracker.core.currencies_utils import get_current_currency
 
 
 class IndexView(views.TemplateView):
-    template_name = 'common/home-page.html'
+    template_name = 'common/index.html'
 
 
 def show_dashboard(request):
