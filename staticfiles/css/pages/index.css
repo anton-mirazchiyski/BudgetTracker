@@ -45,6 +45,7 @@ ul.choose-list {
     display: flex;
     flex-direction: column;
     gap: 2em;
+    padding-top: 2em;
 }
 
 ul.choose-list p {
@@ -59,4 +60,20 @@ ul.choose-list p {
 
 p.income-example-img img {
     border: 0.1em solid #000;
+}
+
+.get-started-section {
+    margin-top: 4em;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
+
+.get-started-section h3, a {
+    text-align: center;
+}
+
+a.get-started-btn {
+    max-width: 7vw;
+    align-self: center;
 }
