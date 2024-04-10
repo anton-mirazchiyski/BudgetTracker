@@ -61,3 +61,13 @@
 .income-amount > span:nth-child(1) {
     flex: 1 1 223px;
 }
+
+.add-income-container button {
+    background-color: #fff;
+    color: #000;
+}
+
+.add-income-container button:hover {
+    background-color: rgb(33, 134, 120);
+    color: #fff;
+}

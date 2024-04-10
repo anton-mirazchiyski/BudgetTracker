@@ -31,6 +31,13 @@
 .add-expenses-container button {
     min-width: 30%;
     margin-top: 2em;
+    background-color: #fff;
+    color: #000;
+}
+
+.add-expenses-container button:hover {
+    background-color: rgb(33, 134, 120);
+    color: #fff;
 }
 
 .add-expense-amount-with-currency {
