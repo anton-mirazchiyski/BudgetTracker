@@ -36,13 +36,28 @@ def get_current_month():
     return current_month
 
 
-def get_total_amount_for_a_month(current_month, queryset):
+def sum_transaction_amount_for_month(current_month, queryset):
     amount_for_month = sum([transaction.amount for transaction in queryset
                             if transaction.date.month == current_month])
     return amount_for_month
 
 
-def get_all_months_of_transactions(all_income, all_expenses):
+def get_total_amount_of_income_for_month(profile, month):
+    all_income = Income.objects.filter(profile=profile).order_by('date')
+    amount = sum_transaction_amount_for_month(month, all_income)
+    return amount
+
+
+def get_total_amount_of_expense_for_month(profile, month):
+    all_expenses = Expense.objects.filter(profile=profile).order_by('date')
+    amount = sum_transaction_amount_for_month(month, all_expenses)
+    return amount
+
+
+def get_all_months_of_transactions(profile):
+    all_income = Income.objects.filter(profile=profile).order_by('date')
+    all_expenses = Expense.objects.filter(profile=profile).order_by('date')
+
     months_of_income = [income.date.month for income in all_income]
     months_of_expenses = [expense.date.month for expense in all_expenses]
     all_months = set(months_of_income + months_of_expenses)
@@ -51,21 +66,25 @@ def get_all_months_of_transactions(all_income, all_expenses):
 
 
 def get_chart_data(profile):
-    all_income = Income.objects.filter(profile=profile).order_by('date')
-    all_expenses = Expense.objects.filter(profile=profile).order_by('date')
-
-    all_months = get_all_months_of_transactions(all_income, all_expenses)
+    all_months = get_all_months_of_transactions(profile)
 
     months = []
     income_amounts = []
     expense_amounts = []
 
     for month in all_months:
-        if month not in months:
-            months.append(month)
-            income_amounts.append(get_total_amount_for_a_month(month, all_income))
-            expense_amounts.append(get_total_amount_for_a_month(month, all_expenses))
+        months.append(month)
+
+        income_amount = get_total_amount_of_income_for_month(profile, month)
+        income_amounts.append(income_amount)
+
+        expense_amount = get_total_amount_of_expense_for_month(profile, month)
+        expense_amounts.append(expense_amount)
 
     months = [month_name[month] for month in months]
 
     return months, income_amounts, expense_amounts
+
+
+def get_doughnut_chart_data(profile):
+    pass
