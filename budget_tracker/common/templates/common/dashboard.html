@@ -4,8 +4,11 @@
 
 {% block content %}
     <div id="chart-container">
-        <div>
+        <div class="bar-chart">
             <canvas id="bar-chart"></canvas>
+        </div>
+        <div class="doughnut-chart">
+            <canvas id="doughnut-chart"></canvas>
         </div>
     </div>
     <div class="summary-container">
@@ -53,6 +56,49 @@
                     title: {
                         display: true,
                         text: 'Income and expenses over time'
+                    }
+                }
+            }
+        });
+
+        let ctx_2 = document.getElementById("doughnut-chart").getContext("2d");
+
+        let chart_2 = new Chart(ctx_2, {
+            type: "doughnut",
+            data: {
+                labels: {{ labels|safe }},
+                datasets: [
+                    {
+                        label: "Gross income ({{ currency|safe }})",
+                        backgroundColor: [
+                            "#79AEC8",
+                        ],
+                        borderColor: "#417690",
+                        borderRadius: 12,
+                        data: {{ earned_income_data|safe }},
+                        barThickness: 80,
+                    },
+                    {
+                        label: "Gross income ({{ currency|safe }})",
+                        backgroundColor: [
+                            "#4865d8",
+                        ],
+                        borderColor: "#417690",
+                        borderRadius: 12,
+                        data: {{ passive_income_data|safe }},
+                        barThickness: 80,
+                    },
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Types of Income over time'
                     }
                 }
             }

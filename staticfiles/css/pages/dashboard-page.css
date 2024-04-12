@@ -1,8 +1,22 @@
 #chart-container {
-    max-width: 40vw;
+    max-width: 80vw;
     margin-top: 2em;
     margin-left: 2em;
+    display: flex;
+    justify-content: space-around;
 }
+
+.bar-chart {
+    min-width: 40vw;
+}
+
+.doughnut-chart {
+    min-width: 25vw;
+}
+
+/*.bar-chart, .doughnut-chart {*/
+/*    flex: 1 0 30%;*/
+/*}*/
 
 .summary-container h2 {
     text-align: center;
