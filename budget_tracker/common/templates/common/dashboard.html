@@ -3,16 +3,18 @@
 {% block title %} Your Financial Overview {% endblock %}
 
 {% block content %}
-    <div id="chart-container">
-        <div class="bar-chart">
-            <canvas id="bar-chart"></canvas>
+    <div class="dashboard-container">
+        <div id="chart-container">
+            <div class="bar-chart">
+                <canvas id="bar-chart"></canvas>
+            </div>
+            <div class="secondary-chart">
+                <canvas id="secondary-chart"></canvas>
+            </div>
         </div>
-        <div class="secondary-chart">
-            <canvas id="secondary-chart"></canvas>
+        <div class="summary-container">
+            <h2>Financial Summary:</h2>
         </div>
-    </div>
-    <div class="summary-container">
-        <h2>Financial Summary:</h2>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
