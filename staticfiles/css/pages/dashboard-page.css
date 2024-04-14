@@ -1,17 +1,20 @@
 #chart-container {
-    max-width: 80vw;
+    max-width: 40vw;
     margin-top: 2em;
     margin-left: 2em;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    gap: 4em;
+    /*justify-content: space-around;*/
 }
 
 .bar-chart {
     min-width: 40vw;
 }
 
-.doughnut-chart {
-    min-width: 25vw;
+.secondary-chart {
+    min-width: 30vw;
+    align-self: center;
 }
 
 /*.bar-chart, .doughnut-chart {*/

@@ -65,7 +65,7 @@ def get_all_months_of_transactions(profile):
     return all_months
 
 
-def get_chart_data(profile):
+def get_primary_chart_data(profile):
     all_months = get_all_months_of_transactions(profile)
 
     months = []
@@ -86,8 +86,9 @@ def get_chart_data(profile):
     return months, income_amounts, expense_amounts
 
 
-def get_doughnut_chart_data(profile):
+def get_secondary_chart_data(profile):
     all_months = get_all_months_of_transactions(profile)
+
     all_earned_income = profile.income_set.filter(type='Earned Income')
     all_passive_income = profile.income_set.filter(type='Passive Income')
 
@@ -97,6 +98,7 @@ def get_doughnut_chart_data(profile):
 
     for month in all_months:
         months.append(month)
+
         earned_income_amount_for_month = sum(
             [income.amount for income in all_earned_income if income.date.month == month])
         earned_income.append(earned_income_amount_for_month)
