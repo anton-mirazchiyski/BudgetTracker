@@ -14,6 +14,25 @@
         </div>
         <div class="summary-container">
             <h2>Financial Summary:</h2>
+            <p>All income: {{ all_income_sum }} {{ currency|make_list|first }}</p>
+            <p>All expense: {{ all_expense_sum }} {{ currency|make_list|first }}</p>
+            <section class="logged-in-choices">
+                <h3>What do you want to do?</h3>
+                <div class="dashboard-buttons">
+                    <div>
+                        <a href="{% url 'income:add-income' %}" class="button">Add an income</a>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                    <div>
+                        <a href="{% url 'expenses:add-expense' %}" class="button">Add an expense</a>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                    <div>
+                        <a href="{% url 'common:balance' %}" class="button">See your balance</a>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
 

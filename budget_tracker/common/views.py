@@ -1,3 +1,4 @@
+from django.db.models import Sum
 from django.shortcuts import render
 from django.views import generic as views
 
@@ -23,6 +24,9 @@ def show_dashboard(request):
     earned_income_data = [int(amount) for amount in earned_income]
     passive_income_data = [int(amount) for amount in passive_income]
 
+    all_income_sum = sum(income_amounts)
+    all_expense_sum = sum(expense_amounts)
+
     context = {
         'labels': labels,
         'data': data,
@@ -30,6 +34,8 @@ def show_dashboard(request):
         'currency': currency,
         'earned_income_data': earned_income_data,
         'passive_income_data': passive_income_data,
+        'all_income_sum': all_income_sum,
+        'all_expense_sum': all_expense_sum,
     }
 
     return render(request, 'common/dashboard.html', context)
