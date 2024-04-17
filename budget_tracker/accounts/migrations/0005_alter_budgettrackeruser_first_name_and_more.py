@@ -14,11 +14,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='budgettrackeruser',
             name='first_name',
-            field=models.CharField(max_length=150, validators=[budget_tracker.accounts.validators.validate_name_contains_only_letters, budget_tracker.accounts.validators.validate_name_has_enough_length]),
+            field=models.CharField(max_length=150, validators=[budget_tracker.accounts.validators.validate_name_contains_only_letters]),
         ),
         migrations.AlterField(
             model_name='budgettrackeruser',
             name='last_name',
-            field=models.CharField(max_length=150, validators=[budget_tracker.accounts.validators.validate_name_contains_only_letters, budget_tracker.accounts.validators.validate_name_has_enough_length]),
+            field=models.CharField(max_length=150, validators=[budget_tracker.accounts.validators.validate_name_contains_only_letters]),
         ),
     ]

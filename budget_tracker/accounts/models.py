@@ -1,8 +1,10 @@
 from django.contrib.auth import get_user_model
+from django.core.validators import MinLengthValidator
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 
-from budget_tracker.accounts.validators import validate_name_contains_only_letters, validate_name_has_enough_length
+from budget_tracker.accounts.validators import validate_name_contains_only_letters, \
+    validate_name_starts_with_capital_letter
 
 
 class MyCustomUserManager(BaseUserManager):
@@ -35,17 +37,19 @@ class MyCustomUserManager(BaseUserManager):
 class BudgetTrackerUser(AbstractBaseUser):
     email = models.EmailField(max_length=255, unique=True, blank=False, null=False)
 
-    first_name = models.CharField(max_length=150,
+    first_name = models.CharField(max_length=50,
                                   validators=[
                                         validate_name_contains_only_letters,
-                                        validate_name_has_enough_length
+                                        validate_name_starts_with_capital_letter,
+                                        MinLengthValidator(3, message='A name must contain at least 3 letters'),
                                   ],
                                   blank=False, null=False)
 
-    last_name = models.CharField(max_length=150,
+    last_name = models.CharField(max_length=50,
                                  validators=[
                                      validate_name_contains_only_letters,
-                                     validate_name_has_enough_length
+                                     validate_name_starts_with_capital_letter,
+                                     MinLengthValidator(3, message='A name must contain at least 3 letters'),
                                  ],
                                  blank=False, null=False)
 
