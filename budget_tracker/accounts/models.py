@@ -101,11 +101,13 @@ class Currency(models.Model):
     EURO = '€ EUR'
     DOLLAR = '$ USD'
     BRITISH_POUND = '£ GBP'
+    BULGARIAN_LEV = 'лв BGN'
 
     CURRENCY_CHOICES = (
         (EURO, EURO),
         (DOLLAR, DOLLAR),
         (BRITISH_POUND, BRITISH_POUND),
+        (BULGARIAN_LEV, BULGARIAN_LEV),
     )
 
     user_profile = models.OneToOneField(UserProfile, on_delete=models.CASCADE)
@@ -150,3 +152,6 @@ class ProfilePhoto(models.Model):
     user_profile = models.OneToOneField(UserProfile, on_delete=models.CASCADE)
 
     photo = models.ImageField(upload_to=user_directory_path, null=True, blank=True)
+
+    def __str__(self):
+        return f'Photo of {self.user_profile}'
