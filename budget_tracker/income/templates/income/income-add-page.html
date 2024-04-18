@@ -15,13 +15,21 @@
             </div>
             <div>
                 <label class="income-form-label">{{ form.amount.label }}</label>
-                <div class="income-amount"><span>{{ form.amount }}</span><span>{{ current_currency|make_list|first }}</span></div>
+                <div class="income-amount">
+                    <span>{{ form.amount }}</span><span>{{ current_currency|make_list|first }}</span></div>
             </div>
             <div>
                 <label class="income-form-label">{{ form.type.label }}</label>
                 {{ form.type }}
             </div>
             <button type="submit">Add</button>
+            {% if form.errors %}
+                <div class="form-errors">
+                    {% for field in form %}
+                        {{ field.errors }}
+                    {% endfor %}
+                </div>
+            {% endif %}
             {% csrf_token %}
         </form>
     </div>
