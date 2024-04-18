@@ -24,7 +24,9 @@
             </div>
             {% if form.errors %}
                 <div class="registration-errors form-errors">
-                    {{ form.errors }}
+                {% for field in form %}
+                    {{ field.errors }}
+                {% endfor %}
                 </div>
             {% endif %}
         </form>
