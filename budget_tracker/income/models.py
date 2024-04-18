@@ -45,4 +45,4 @@ class Income(models.Model):
     profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.amount}{self.currency} - {self.date}'
+        return f'Income - {self.amount}{self.currency} - {self.date}'

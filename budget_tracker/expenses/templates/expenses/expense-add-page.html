@@ -25,6 +25,13 @@
             </div>
             <button type="submit">Add</button>
             {% csrf_token %}
+            {% if form.errors %}
+                <div class="form-errors">
+                    {% for field in form %}
+                        {{ field.errors }}
+                    {% endfor %}
+                </div>
+            {% endif %}
         </form>
     </div>
 {% endblock %}
