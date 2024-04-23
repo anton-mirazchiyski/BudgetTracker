@@ -8,8 +8,11 @@ from budget_tracker.income.validators import validate_income_source_contains_onl
 
 class Income(models.Model):
 
+    MAX_LEN_INCOME_SOURCE = 30
     MIN_LEN_INCOME_SOURCE = 4
     MIN_AMOUNT = 5
+    MAX_LEN_TYPE = 25
+    MAX_LEN_CURRENCY = 10
 
     EARNED_INCOME = 'Earned Income'
     PASSIVE_INCOME = 'Passive Income'
@@ -22,9 +25,9 @@ class Income(models.Model):
     )
 
     income_source_error_message = f'Income source must contain at least {MIN_LEN_INCOME_SOURCE} characters'
-    amount_error_message = f'Minimum amount must be greater than {MIN_AMOUNT}'
+    amount_error_message = f'Minimum amount must be at least {MIN_AMOUNT}'
 
-    source = models.CharField(max_length=30,
+    source = models.CharField(max_length=MAX_LEN_INCOME_SOURCE,
                               validators=[MinLengthValidator(MIN_LEN_INCOME_SOURCE,
                                                              message=income_source_error_message),
                                           validate_income_source_contains_only_letters],
@@ -34,9 +37,9 @@ class Income(models.Model):
                                  validators=[MinValueValidator(MIN_AMOUNT, message=amount_error_message)],
                                  null=False, blank=False)
 
-    type = models.CharField(max_length=30, choices=INCOME_CHOICES, null=False, blank=False)
+    type = models.CharField(max_length=MAX_LEN_TYPE, choices=INCOME_CHOICES, null=False, blank=False)
 
-    currency = models.CharField(max_length=30, null=True, blank=True)
+    currency = models.CharField(max_length=MAX_LEN_CURRENCY, null=True, blank=True)
 
     date = models.DateField(default=date.today, null=False, blank=True)
 
