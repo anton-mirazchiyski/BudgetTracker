@@ -1,0 +1,23 @@
+div.page-not-exist-container {
+    justify-content: space-evenly;
+}
+
+div.page-not-exist-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.page-not-exist-info h1 {
+    text-align: center;
+}
+
+a.return-button {
+    max-width: 35%;
+    align-self: center;
+    padding: 0.5em 0.8em;
+}
+
+.page-not-exist-container span {
+    font-size: 2.4em;
+}

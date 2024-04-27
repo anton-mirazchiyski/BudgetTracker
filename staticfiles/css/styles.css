@@ -7,6 +7,8 @@
 @import "elements/forms.css";
 @import "elements/buttons.css";
 
+@import "pages/404.css";
+
 @import "pages/index.css";
 @import "pages/account-create-page.css";
 @import "pages/account-login-page.css";
