@@ -39,7 +39,7 @@
                 <b>Submitted on:</b>
             </li>
             <li>
-                <b>Remove:</b>
+                <b>Remove: or Edit:</b>
             </li>
         </ul>
         {% for income in object_list %}
@@ -58,6 +58,8 @@
                 </li>
                 <li>
                     <a href="{% url 'income:delete-income' income.pk %}"><i class="fa-solid fa-xmark"></i></a>
+                    <a href="{% url 'income:edit-income' income.pk %}"
+                       class="edit-income-link"><i class="fa-regular fa-pen-to-square"></i></a>
                 </li>
             </ul>
         {% endfor %}

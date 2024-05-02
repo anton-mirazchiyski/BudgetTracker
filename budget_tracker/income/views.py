@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 from django.views import generic as views
 
 from budget_tracker.core.accounts_utils import get_user_profile
 from budget_tracker.core.common_utils import add_to_balance, subtract_from_balance, get_current_month
 from budget_tracker.core.currencies_utils import get_current_currency
 from budget_tracker.core.mixins import IncomeListContextMixin
-from budget_tracker.income.forms import IncomeAddForm
+from budget_tracker.income.forms import IncomeAddForm, IncomeUpdateForm
 from budget_tracker.income.models import Income
 
 
@@ -63,6 +64,13 @@ def add_income(request):
     return render(request, 'income/income-add-page.html', {
         'form': form, 'current_currency': current_currency
     })
+
+
+class IncomeUpdateView(views.UpdateView):
+    model = Income
+    form_class = IncomeUpdateForm
+    template_name = 'income/income-edit-page.html'
+    success_url = reverse_lazy('income:all-income')
 
 
 def delete_income(request, pk):

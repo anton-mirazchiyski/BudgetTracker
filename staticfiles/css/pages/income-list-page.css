@@ -30,10 +30,16 @@
     font-size: 20px;
 }
 
+a.edit-income-link {
+    color: #000;
+    margin-left: 3.7em;
+}
+
 .add-income-button {
     position: absolute;
     right: 0;
     margin-right: 7em;
+    margin-top: 0.5em;
 }
 
 .income-calculations {

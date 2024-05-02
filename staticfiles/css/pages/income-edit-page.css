@@ -1,0 +1,12 @@
+.edit-income-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 50vh;
+    justify-content: center;
+    align-items: center;
+    gap: 3em;
+}
+
+button.edit-income-btn {
+    min-width: 6em;
+}

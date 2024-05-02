@@ -65,6 +65,7 @@
 .add-income-container button {
     background-color: #fff;
     color: #000;
+    min-width: 50%;
 }
 
 .add-income-container button:hover {

@@ -3,7 +3,7 @@ from django import forms
 from budget_tracker.income.models import Income
 
 
-class IncomeAddForm(forms.ModelForm):
+class IncomeBaseForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field in self.fields:
@@ -18,3 +18,11 @@ class IncomeAddForm(forms.ModelForm):
             'amount': 'Amount:',
             'type': 'Type of Income:',
         }
+
+
+class IncomeAddForm(IncomeBaseForm):
+    pass
+
+
+class IncomeUpdateForm(IncomeBaseForm):
+    pass

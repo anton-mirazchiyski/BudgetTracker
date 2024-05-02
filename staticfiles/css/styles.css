@@ -15,10 +15,14 @@
 @import "pages/account-details-page.css";
 @import "pages/account-delete-page.css";
 @import "pages/currency-change-page.css";
+
 @import "pages/dashboard-page.css";
 @import "pages/balance-page.css";
+
 @import "pages/income-list-page.css";
 @import "pages/income-add-page.css";
+@import "pages/income-edit-page.css";
+
 @import "pages/expenses-list-page.css";
 @import "pages/expense-add-page.css";
 

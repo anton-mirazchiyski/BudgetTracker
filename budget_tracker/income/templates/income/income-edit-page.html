@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2 class="heading">Edit income</h2>
+
+    <div class="edit-income-container">
+        <form action="{% url 'income:edit-income' object.pk %}" method="post">
+            {{ form.as_div }}
+            <button type="submit" class="edit-income-btn">Edit</button>
+            {% csrf_token %}
+        </form>
+    </div>
+{% endblock %}
