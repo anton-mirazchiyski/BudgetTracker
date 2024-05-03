@@ -1,11 +1,30 @@
 {% extends 'base.html' %}
 
+{% block title %} Edit an Income {% endblock %}
+
 {% block content %}
     <h2 class="heading">Edit income</h2>
 
     <div class="edit-income-container">
+        <p><i class="fa-solid fa-pen-to-square"></i></p>
+
         <form action="{% url 'income:edit-income' object.pk %}" method="post">
-            {{ form.as_div }}
+            <div>
+                <label>{{ form.source.label_tag }}</label>
+                {{ form.source }}
+            </div>
+
+            <div>
+                <label>{{ form.amount.label_tag }}</label>
+                <div class="amount-and-currency">
+                    <span>{{ form.amount }}</span> <span>{{ object.currency|make_list|first }}</span>
+                </div>
+            </div>
+
+            <div>
+                <label>{{ form.type.label_tag }}</label>
+                {{ form.type }}
+            </div>
             <button type="submit" class="edit-income-btn">Edit</button>
             {% csrf_token %}
         </form>

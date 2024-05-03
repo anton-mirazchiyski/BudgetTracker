@@ -7,6 +7,41 @@
     gap: 3em;
 }
 
-button.edit-income-btn {
-    min-width: 6em;
+.edit-income-container > p {
+    color: rgb(33, 134, 120);
+    font-size: 3em;
+}
+
+.edit-income-container > form div {
+    margin-bottom: 1em;
+}
+
+.edit-income-container label {
+    padding-bottom: 0.3em;
+}
+
+.amount-and-currency {
+    display: flex;
+}
+
+.amount-and-currency > span:nth-child(1) {
+    min-width: 100%;
+}
+
+.amount-and-currency > span:nth-child(2) {
+    align-self: center;
+    margin-left: 0.3em;
+    font-size: 1.5em;
+}
+
+.edit-income-container button {
+    background-color: #fff;
+    color: #000;
+    min-width: 50%;
+    margin-top: 2em;
+}
+
+.edit-income-container button:hover {
+    background-color: rgb(33, 134, 120);
+    color: #fff;
 }
