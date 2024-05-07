@@ -13,7 +13,7 @@
 }
 
 .edit-income-container > form div {
-    margin-bottom: 1em;
+    margin-bottom: 1.3em;
 }
 
 .edit-income-container label {
@@ -44,4 +44,8 @@
 .edit-income-container button:hover {
     background-color: rgb(33, 134, 120);
     color: #fff;
+}
+
+.edit-income-container div:nth-child(3) .income-form-input {
+    text-indent: 10px;
 }
