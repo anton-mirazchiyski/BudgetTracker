@@ -15,8 +15,9 @@
             </div>
             <div>
                 <label>{{ form.amount.label }}</label>
-                <div class="income-amount">
-                    <span>{{ form.amount }}</span><span>{{ current_currency|make_list|first }}</span></div>
+                <div class="amount-and-currency">
+                    <span>{{ form.amount }}</span><span>{{ current_currency|make_list|first }}</span>
+                </div>
             </div>
             <div>
                 <label>{{ form.type.label }}</label>

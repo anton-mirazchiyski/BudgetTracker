@@ -24,19 +24,6 @@
     font-size: 3em;
 }
 
-.income-amount {
-    display: flex;
-}
-
-.income-amount span:nth-child(2) {
-    margin-left: 0.2em;
-    font-size: 1.8em;
-}
-
-.income-amount > span:nth-child(1) {
-    flex: 1 1 223px;
-}
-
 .add-income-container button {
     margin-top: 2em;
     background-color: #fff;
