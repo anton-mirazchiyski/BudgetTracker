@@ -36,3 +36,17 @@ their accounts. Users can also upload profile photos or change existing ones, ch
 
 ![Income-page](https://github.com/anton-mirazchiyski/BudgetTracker/assets/146716409/7bdf5027-8a7a-45e5-b216-6c97c4201502)
 
+
+![Expenses-page](https://github.com/anton-mirazchiyski/BudgetTracker/assets/146716409/66bf2478-4806-4732-a7ff-0614c8cd66be)
+
+
+![Balance-page](https://github.com/anton-mirazchiyski/BudgetTracker/assets/146716409/0f2c82b4-50ff-466b-bca9-5cc1e9028670)
+
+
+![Profile-page](https://github.com/anton-mirazchiyski/BudgetTracker/assets/146716409/150629e4-9961-42b1-8a4f-e8248826ef8d)
+
+
+![Currency-change-page](https://github.com/anton-mirazchiyski/BudgetTracker/assets/146716409/70650e37-c9e2-4e89-8d2b-5c593f27ba72)
+
+
+![Account-delete-page](https://github.com/anton-mirazchiyski/BudgetTracker/assets/146716409/27e37dce-1487-4b4f-a56a-62c7a3565284)
