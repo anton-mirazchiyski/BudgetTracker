@@ -22,6 +22,7 @@
 }
 
 .profile-save-button {
+    min-width: 40%;
     padding: 0.4em 0.4em;
     background-color: #14A44D;
     color: #fff;
