@@ -4,6 +4,7 @@
 
 .expense-form-input {
     height: 3em;
+    min-width: 13.75em;
 }
 
 .add-expenses-container form > div {
@@ -23,7 +24,7 @@
     border: 2px solid #000;
     border-radius: 0.7em;
     outline: none;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 500;
     text-indent: 20px;
 }
@@ -48,4 +49,8 @@
 .add-expense-currency {
     font-size: 1.4em;
     align-self: center;
+}
+
+.expense-description-input:focus {
+    border-color: rgb(33, 134, 120);
 }

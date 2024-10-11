@@ -2,14 +2,14 @@ header {
     display: flex;
     background-color: rgb(9, 121, 105, 0.9);
     justify-content: center;
-    padding: 2.1em 0;
+    padding: 1.8em 0;
     border-bottom: 2px solid black;
-    max-height: 10.5vh;
 }
 
 header > p {
     flex: 0 1 10%;
     text-align: center;
+    margin-left: 1.2em;
 }
 
 header > p a {

@@ -17,6 +17,6 @@ class ExpenseAddForm(forms.ModelForm):
         fields = ['description', 'amount', 'date']
 
         widgets = {
-            'description': forms.Textarea(attrs={'rows': 10, 'cols': 40}),
+            'description': forms.Textarea(attrs={'rows': 12, 'cols': 30}),
             'date': forms.DateInput(attrs={'type': 'date'})
         }
