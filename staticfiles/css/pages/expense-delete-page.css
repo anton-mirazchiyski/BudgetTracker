@@ -1,0 +1,38 @@
+.expense-delete-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5em;
+}
+.expense-delete-field {
+    margin-bottom: 1em;
+}
+
+.expense-delete-label {
+    padding-bottom: 0.4em;
+}
+
+.radio-select {
+    display: flex;
+    gap: 5em;
+    font-weight: 500;
+    font-size: 1.05rem;
+}
+
+.radio-select * {
+    display: flex;
+    gap: 0.4em;
+}
+
+.expense-delete-btn-container {
+    display: flex;
+    justify-content: center;
+}
+
+.expense-delete-button {
+    background-color: indianred;
+    margin-top: 1.5em;
+}
+
+.expense-delete-button:hover {
+    background-color: #ca4c4c;
+}

@@ -25,5 +25,6 @@
 
 @import "pages/expenses-list-page.css";
 @import "pages/expense-add-page.css";
+@import "pages/expense-delete-page.css";
 
 @import "errors-and-messages.css";
