@@ -7,24 +7,24 @@
 @import "elements/forms.css";
 @import "elements/buttons.css";
 
-@import "pages/404.css";
+@import "pages/common/404.css";
 
-@import "pages/index.css";
-@import "pages/account-create-page.css";
-@import "pages/account-login-page.css";
-@import "pages/account-details-page.css";
-@import "pages/account-delete-page.css";
-@import "pages/currency-change-page.css";
+@import "pages/common/index.css";
+@import "pages/accounts/account-create-page.css";
+@import "pages/accounts/account-login-page.css";
+@import "pages/accounts/account-details-page.css";
+@import "pages/accounts/account-delete-page.css";
+@import "pages/common/currency-change-page.css";
 
-@import "pages/dashboard-page.css";
-@import "pages/balance-page.css";
+@import "pages/common/dashboard-page.css";
+@import "pages/common/balance-page.css";
 
-@import "pages/income-list-page.css";
-@import "pages/income-add-page.css";
-@import "pages/income-edit-page.css";
+@import "pages/income/income-list-page.css";
+@import "pages/income/income-add-page.css";
+@import "pages/income/income-edit-page.css";
 
-@import "pages/expenses-list-page.css";
-@import "pages/expense-add-page.css";
-@import "pages/expense-delete-page.css";
+@import "pages/expenses/expenses-list-page.css";
+@import "pages/expenses/expense-add-page.css";
+@import "pages/expenses/expense-delete-page.css";
 
 @import "errors-and-messages.css";
