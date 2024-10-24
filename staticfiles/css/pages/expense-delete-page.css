@@ -29,10 +29,10 @@
 }
 
 .expense-delete-button {
-    background-color: indianred;
+    background-color: #ca4c4c;
     margin-top: 1.5em;
 }
 
 .expense-delete-button:hover {
-    background-color: #ca4c4c;
+    background-color: indianred;
 }

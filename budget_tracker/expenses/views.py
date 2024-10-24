@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import generic as views
 
 from budget_tracker.core.accounts_utils import get_user_profile
-from budget_tracker.core.common_utils import add_to_balance, subtract_from_balance
+from budget_tracker.core.common_utils import subtract_from_balance
 from budget_tracker.core.currencies_utils import get_current_currency
 from budget_tracker.core.expenses_utils import delete_expense
 from budget_tracker.expenses.forms import ExpenseAddForm, ExpenseDeleteChoiceForm, ExpenseDeleteForm
