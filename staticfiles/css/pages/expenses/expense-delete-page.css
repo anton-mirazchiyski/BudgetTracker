@@ -29,7 +29,8 @@
 }
 
 .expense-delete-button {
-    background-color: #ca4c4c;
+    background-color: red;
+    padding: 0.4em 2em;
     margin-top: 1.5em;
 }
 

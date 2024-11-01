@@ -41,17 +41,3 @@ class ExpenseDeleteForm(forms.ModelForm):
             'description': forms.Textarea(attrs={'rows': 12, 'cols': 30}),
             'date': forms.DateInput(attrs={'type': 'date'})
         }
-
-
-class ExpenseDeleteChoiceForm(forms.Form):
-    DELETE_WITH_MONEY_RETURN = 'Delete WITH money returning to balance'
-    DELETE_WITHOUT_MONEY_RETURN = 'Delete WITHOUT money returning to balance'
-
-    CHOICES = (
-        (DELETE_WITH_MONEY_RETURN, DELETE_WITH_MONEY_RETURN),
-        (DELETE_WITHOUT_MONEY_RETURN, DELETE_WITHOUT_MONEY_RETURN),
-    )
-
-    delete_choice = forms.CharField(
-        widget=forms.RadioSelect(choices=CHOICES, attrs={'class': 'radio-select'})
-    )

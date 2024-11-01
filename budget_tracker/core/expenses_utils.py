@@ -15,10 +15,3 @@ def determine_expense_return_amount_on_delete(profile, expense):
         add_penultimate_transaction_to_balance_if_is_income(profile)
     else:
         add_to_balance(profile, expense.amount)
-
-
-def delete_expense(profile, expense, choice):
-    if choice == 'Delete WITH money returning to balance':
-        determine_expense_return_amount_on_delete(profile, expense)
-
-    expense.delete()

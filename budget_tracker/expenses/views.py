@@ -4,8 +4,8 @@ from django.views import generic as views
 from budget_tracker.core.accounts_utils import get_user_profile
 from budget_tracker.core.common_utils import subtract_from_balance
 from budget_tracker.core.currencies_utils import get_current_currency
-from budget_tracker.core.expenses_utils import delete_expense
-from budget_tracker.expenses.forms import ExpenseAddForm, ExpenseDeleteChoiceForm, ExpenseDeleteForm
+from budget_tracker.core.expenses_utils import determine_expense_return_amount_on_delete
+from budget_tracker.expenses.forms import ExpenseAddForm, ExpenseDeleteForm
 from budget_tracker.expenses.models import Expense
 
 
@@ -44,23 +44,19 @@ def add_expense(request):
                   {'form': form, 'current_currency': current_currency})
 
 
-def show_expense_delete_confirmation_and_choices(request, pk):
+def delete_expense(request, pk):
     profile = get_user_profile(request)
     expense = profile.expense_set.filter().get(pk=pk)
 
     if request.method == 'POST':
-        choice_form = ExpenseDeleteChoiceForm(request.POST)
-        if choice_form.is_valid():
-            delete_choice = choice_form.cleaned_data.get('delete_choice')
-            delete_expense(profile, expense, delete_choice)
-            return redirect('expenses:all-expenses')
+        determine_expense_return_amount_on_delete(profile, expense)
+        expense.delete()
+        return redirect('expenses:all-expenses')
 
     form = ExpenseDeleteForm(instance=expense)
-    choice_form = ExpenseDeleteChoiceForm()
 
     context = {
         'form': form,
-        'choice_form': choice_form,
         'expense': expense,
     }
     return render(request, 'expenses/expense-delete-page.html', context)
