@@ -1,4 +1,4 @@
-from django.core.validators import MinValueValidator
+from django.core.validators import MinValueValidator, MinLengthValidator
 from django.db import models
 
 from budget_tracker.accounts.models import UserProfile
@@ -6,11 +6,16 @@ from budget_tracker.accounts.models import UserProfile
 
 class Expense(models.Model):
 
+    MAX_LEN_DESCRIPTION = 60
+    MIN_LEN_DESCRIPTION = 5
     MIN_AMOUNT = 5
 
+    description_error_message = f'Expense description must contain at least {MIN_LEN_DESCRIPTION} characters!'
     amount_error_message = f'Minimum amount must be at least {MIN_AMOUNT}'
 
-    description = models.TextField(null=True, blank=True)
+    description = models.CharField(max_length=MAX_LEN_DESCRIPTION,
+                                   validators=[MinLengthValidator(5, message=description_error_message)],
+                                   null=False, blank=False)
 
     date = models.DateField(null=False, blank=False)
 
