@@ -15,30 +15,9 @@
     padding-bottom: 0.5em;
 }
 
-.add-expense-amount,
+.add-expense-description,
 .add-expense-date {
-    max-width: 70%;
-}
-
-.expense-description-input {
-    border: 2px solid #000;
-    border-radius: 0.7em;
-    outline: none;
-    font-size: 1rem;
-    font-weight: 500;
-    text-indent: 20px;
-}
-
-.add-expenses-container button {
-    min-width: 30%;
-    margin-top: 2em;
-    background-color: #fff;
-    color: #000;
-}
-
-.add-expenses-container button:hover {
-    background-color: rgb(33, 134, 120);
-    color: #fff;
+    max-width: 13.75em;
 }
 
 .add-expense-amount-with-currency {
@@ -51,6 +30,14 @@
     align-self: center;
 }
 
-.expense-description-input:focus {
-    border-color: rgb(33, 134, 120);
+.add-expenses-container button {
+    min-width: 45%;
+    margin-top: 2.2em;
+    background-color: #fff;
+    color: #000;
+}
+
+.add-expenses-container button:hover {
+    background-color: rgb(33, 134, 120);
+    color: #fff;
 }
